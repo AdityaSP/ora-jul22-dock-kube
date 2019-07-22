@@ -1,0 +1,162 @@
+$ ps -ef | grep dockerd
+root      2398     1  8 16:50 ?        00:10:33 /usr/bin/dockerd -H tcp://0.0.0.0:2376 -H unix:///var/run/docker.sock --tlsverify --tlscacert /etc/docker/ca.pem --tlscert /etc/docker/server.pem --tlskey /etc/docker/server-key.pem --label provider=virtualbox --insecure-registry 10.96.0.0/12
+docker    4231 14316  0 18:57 pts/0    00:00:00 grep dockerd
+$ docker version
+Client:
+ Version:      17.09.0-ce
+ API version:  1.32
+ Go version:   go1.8.3
+ Git commit:   afdb6d4
+ Built:        Tue Sep 26 22:39:28 2017
+ OS/Arch:      linux/amd64
+
+Server:
+ Version:      17.09.0-ce
+ API version:  1.32 (minimum version 1.12)
+ Go version:   go1.8.3
+ Git commit:   afdb6d4
+ Built:        Tue Sep 26 22:45:38 2017
+ OS/Arch:      linux/amd64
+ Experimental: false
+$ docker
+
+Usage:  docker COMMAND
+
+A self-sufficient runtime for containers
+
+Options:
+      --config string      Location of client config files (default
+                           "/home/docker/.docker")
+  -D, --debug              Enable debug mode
+      --help               Print usage
+  -H, --host list          Daemon socket(s) to connect to
+  -l, --log-level string   Set the logging level
+                           ("debug"|"info"|"warn"|"error"|"fatal")
+                           (default "info")
+      --tls                Use TLS; implied by --tlsverify
+      --tlscacert string   Trust certs signed only by this CA (default
+                           "/home/docker/.docker/ca.pem")
+      --tlscert string     Path to TLS certificate file (default
+                           "/home/docker/.docker/cert.pem")
+      --tlskey string      Path to TLS key file (default
+                           "/home/docker/.docker/key.pem")
+      --tlsverify          Use TLS and verify the remote
+  -v, --version            Print version information and quit
+
+Management Commands:
+  config      Manage Docker configs
+  container   Manage containers
+  image       Manage images
+  network     Manage networks
+  node        Manage Swarm nodes
+  plugin      Manage plugins
+  secret      Manage Docker secrets
+  service     Manage services
+  stack       Manage Docker stacks
+  swarm       Manage Swarm
+  system      Manage Docker
+  volume      Manage volumes
+
+Commands:
+  attach      Attach local standard input, output, and error streams to a running container
+  build       Build an image from a Dockerfile
+  commit      Create a new image from a container's changes
+  cp          Copy files/folders between a container and the local filesystem
+  create      Create a new container
+  diff        Inspect changes to files or directories on a container's filesystem
+  events      Get real time events from the server
+  exec        Run a command in a running container
+  export      Export a container's filesystem as a tar archive
+  history     Show the history of an image
+  images      List images
+  import      Import the contents from a tarball to create a filesystem image
+  info        Display system-wide information
+  inspect     Return low-level information on Docker objects
+  kill        Kill one or more running containers
+  load        Load an image from a tar archive or STDIN
+  login       Log in to a Docker registry
+  logout      Log out from a Docker registry
+  logs        Fetch the logs of a container
+  pause       Pause all processes within one or more containers
+  port        List port mappings or a specific mapping for the container
+  ps          List containers
+  pull        Pull an image or a repository from a registry
+  push        Push an image or a repository to a registry
+  rename      Rename a container
+  restart     Restart one or more containers
+  rm          Remove one or more containers
+  rmi         Remove one or more images
+  run         Run a command in a new container
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)
+  search      Search the Docker Hub for images
+  start       Start one or more stopped containers
+  stats       Display a live stream of container(s) resource usage statistics
+  stop        Stop one or more running containers
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+  top         Display the running processes of a container
+  unpause     Unpause all processes within one or more containers
+  update      Update configuration of one or more containers
+  version     Show the Docker version information
+  wait        Block until one or more containers stop, then print their exit codes
+
+Run 'docker COMMAND --help' for more information on a command.
+$
+$ docker container ls
+CONTAINER ID        IMAGE                                                            COMMAND                  CREATED             STATUS              PORTS                                                                NAMES
+141725dfa4b8        quay.io/kubernetes-ingress-controller/nginx-ingress-controller   "/usr/bin/dumb-ini..."   2 hours ago         Up 2 hours                                                                               k8s_nginx-ingress-controller_nginx-ingress-controller-zjd74_kube-system_ab42b3da-2f94-11e9-8d17-080027326ca6_580
+507bdc4a502f        k8s.gcr.io/k8s-dns-sidecar-amd64                                 "/sidecar --v=2 --..."   2 hours ago         Up 2 hours                                                                               k8s_sidecar_kube-dns-54cccfbdf8-fm9cn_kube-system_cfc65d88-77aa-11e9-bc85-080027326ca6_38
+6316601f5f0a        k8s.gcr.io/kubernetes-dashboard-amd64                            "/dashboard --inse..."   2 hours ago         Up 2 hours                                                                               k8s_kubernetes-dashboard_kubernetes-dashboard-77d8b98585-mftdb_kube-system_1806d17c-804a-11e9-a140-080027326ca6_51
+4b04a9b40ec4        k8s.gcr.io/heapster-grafana-amd64                                "/run.sh"                2 hours ago         Up 2 hours                                                                               k8s_grafana_influxdb-grafana-tx55c_kube-system_ab1bc183-2f94-11e9-8d17-080027326ca6_88
+632c3cd48ccb        k8s.gcr.io/k8s-dns-dnsmasq-nanny-amd64                           "/dnsmasq-nanny -v..."   2 hours ago         Up 2 hours                                                                               k8s_dnsmasq_kube-dns-54cccfbdf8-fm9cn_kube-system_cfc65d88-77aa-11e9-bc85-080027326ca6_37
+859836b78173        k8s.gcr.io/heapster-influxdb-amd64                               "influxd --config ..."   2 hours ago         Up 2 hours                                                                               k8s_influxdb_monitoring-influxdb-66946c9f58-h5lhw_kube-system_abf955f0-2f94-11e9-8d17-080027326ca6_89
+f73c359eff07        k8s.gcr.io/k8s-dns-kube-dns-amd64                                "/kube-dns --domai..."   2 hours ago         Up 2 hours                                                                               k8s_kubedns_kube-dns-54cccfbdf8-fm9cn_kube-system_cfc65d88-77aa-11e9-bc85-080027326ca6_38
+e9dc55718f88        gcr.io/google_containers/metrics-server-amd64                    "/metrics-server -..."   2 hours ago         Up 2 hours                                                                               k8s_metrics-server_metrics-server-bb9ffc6b8-c4bsh_kube-system_ac742fe8-2f94-11e9-8d17-080027326ca6_22
+4b6c5ff22ff3        k8s.gcr.io/heapster-influxdb-amd64                               "influxd --config ..."   2 hours ago         Up 2 hours                                                                               k8s_influxdb_influxdb-grafana-tx55c_kube-system_ab1bc183-2f94-11e9-8d17-080027326ca6_92
+1ec4c393d194        gcr.io/kubernetes-helm/tiller                                    "/tiller"                2 hours ago         Up 2 hours                                                                               k8s_tiller_tiller-deploy-5b7c59888b-6rbgl_kube-system_42cc5a34-3c10-11e9-a9d7-080027326ca6_42
+403af8f3f674        k8s.gcr.io/defaultbackend                                        "/server"                2 hours ago         Up 2 hours                                                                               k8s_default-http-backend_default-http-backend-cvzhd_kube-system_ab6b020b-2f94-11e9-8d17-080027326ca6_324
+1bbec8d5452b        k8s.gcr.io/heapster-amd64                                        "/heapster --sourc..."   2 hours ago         Up 2 hours                                                                               k8s_heapster_heapster-xnbjb_kube-system_aafb3c7c-2f94-11e9-8d17-080027326ca6_88
+d4f072d711be        prom/prometheus                                                  "/bin/prometheus -..."   2 hours ago         Up 2 hours                                                                               k8s_prometheus_prometheus-deployment-79c7cf44fc-xdj6l_monitoring_ed3806b7-803f-11e9-a140-080027326ca6_28
+17d6d84c006f        gcr.io/google_containers/pause-amd64:3.0                         "/pause"                 2 hours ago         Up 2 hours                                                                               k8s_POD_kube-dns-54cccfbdf8-fm9cn_kube-system_cfc65d88-77aa-11e9-bc85-080027326ca6_35
+5c1022d7857f        gcr.io/google_containers/pause-amd64:3.0                         "/pause"                 2 hours ago         Up 2 hours                                                                               k8s_POD_monitoring-influxdb-66946c9f58-h5lhw_kube-system_abf955f0-2f94-11e9-8d17-080027326ca6_87
+3692954a4c5d        gcr.io/google_containers/pause-amd64:3.0                         "/pause"                 2 hours ago         Up 2 hours                                                                               k8s_POD_kubernetes-dashboard-77d8b98585-mftdb_kube-system_1806d17c-804a-11e9-a140-080027326ca6_28
+4ae6a95e7cc2        k8s.gcr.io/heapster-grafana-amd64                                "/run.sh"                2 hours ago         Up 2 hours                                                                               k8s_grafana_monitoring-grafana-65757b9656-h4fbs_kube-system_abcaee65-2f94-11e9-8d17-080027326ca6_86
+63325278f2c5        gcr.io/google_containers/pause-amd64:3.0                         "/pause"                 2 hours ago         Up 2 hours          0.0.0.0:80->80/tcp, 0.0.0.0:443->443/tcp, 0.0.0.0:18080->18080/tcp   k8s_POD_nginx-ingress-controller-zjd74_kube-system_ab42b3da-2f94-11e9-8d17-080027326ca6_87
+0b0afe0a5b97        k8s.gcr.io/heapster-amd64                                        "/heapster --sourc..."   2 hours ago         Up 2 hours                                                                               k8s_heapster_heapster-546c9964c6-2w8ld_kube-system_ac314ae9-2f94-11e9-8d17-080027326ca6_88
+38b267359446        gcr.io/google_containers/pause-amd64:3.0                         "/pause"                 2 hours ago         Up 2 hours                                                                               k8s_POD_influxdb-grafana-tx55c_kube-system_ab1bc183-2f94-11e9-8d17-080027326ca6_88
+6918fd124212        gcr.io/google_containers/pause-amd64:3.0                         "/pause"                 2 hours ago         Up 2 hours                                                                               k8s_POD_default-http-backend-cvzhd_kube-system_ab6b020b-2f94-11e9-8d17-080027326ca6_89
+e1c78de51a88        gcr.io/google-containers/kube-addon-manager                      "/opt/kube-addons.sh"    2 hours ago         Up 2 hours                                                                               k8s_kube-addon-manager_kube-addon-manager-minikube_kube-system_c4c3188325a93a2d7fb1714e1abf1259_91
+41ebe2164fe2        gcr.io/google_containers/pause-amd64:3.0                         "/pause"                 2 hours ago         Up 2 hours                                                                               k8s_POD_heapster-xnbjb_kube-system_aafb3c7c-2f94-11e9-8d17-080027326ca6_87
+c0fa2e5b6dcf        gcr.io/google_containers/pause-amd64:3.0                         "/pause"                 2 hours ago         Up 2 hours                                                                               k8s_POD_metrics-server-bb9ffc6b8-c4bsh_kube-system_ac742fe8-2f94-11e9-8d17-080027326ca6_86
+3ebbb1874754        gcr.io/google_containers/pause-amd64:3.0                         "/pause"                 2 hours ago         Up 2 hours                                                                               k8s_POD_prometheus-deployment-79c7cf44fc-xdj6l_monitoring_ed3806b7-803f-11e9-a140-080027326ca6_28
+2085a5902ff5        gcr.io/google_containers/pause-amd64:3.0                         "/pause"                 2 hours ago         Up 2 hours                                                                               k8s_POD_tiller-deploy-5b7c59888b-6rbgl_kube-system_42cc5a34-3c10-11e9-a9d7-080027326ca6_80
+dad2a6c40124        gcr.io/google_containers/pause-amd64:3.0                         "/pause"                 2 hours ago         Up 2 hours                                                                               k8s_POD_monitoring-grafana-65757b9656-h4fbs_kube-system_abcaee65-2f94-11e9-8d17-080027326ca6_87
+8af4e79e1a5f        gcr.io/google_containers/pause-amd64:3.0                         "/pause"                 2 hours ago         Up 2 hours                                                                               k8s_POD_heapster-546c9964c6-2w8ld_kube-system_ac314ae9-2f94-11e9-8d17-080027326ca6_87
+0b864b76f025        gcr.io/google_containers/pause-amd64:3.0                         "/pause"                 2 hours ago         Up 2 hours                                                                               k8s_POD_kube-addon-manager-minikube_kube-system_c4c3188325a93a2d7fb1714e1abf1259_87
+$
+$ docker container ls | grep -v k8s
+CONTAINER ID        IMAGE                                                            COMMAND                  CREATED             STATUS              PORTS                                                                NAMES
+$ docker container run nginx
+Unable to find image 'nginx:latest' locally
+latest: Pulling from library/nginx
+0a4690c5d889: Pull complete
+9719afee3eb7: Pull complete
+44446b456159: Pull complete
+Digest: sha256:b4b9b3eee194703fc2fa8afa5b7510c77ae70cfba567af1376a573a967c03dbb
+Status: Downloaded newer image for nginx:latest
+$ docker container ls | grep -v k8s
+CONTAINER ID        IMAGE                                                            COMMAND                  CREATED             STATUS              PORTS                                                                NAMES
+$ docker container ls -a| grep -v k8s
+CONTAINER ID        IMAGE                                                            COMMAND                  CREATED             STATUS                      PORTS                                                                NAMES
+ff04e7b3ccac        nginx                                                            "nginx -g 'daemon ..."   8 minutes ago       Exited (0) 31 seconds ago                                                                        silly_hoover
+$ docker container start ff04e7b3ccac
+ff04e7b3ccac
+$ docker container ls -a| grep -v k8s
+CONTAINER ID        IMAGE                                                            COMMAND                  CREATED             STATUS                     PORTS                                                                NAMES
+ff04e7b3ccac        nginx                                                            "nginx -g 'daemon ..."   9 minutes ago       Up 4 seconds               80/tcp                                                               silly_hoover
+$ docker container run -d nginx
+cec8d14083eb78a8cf005d94fe69ab88ea5ac732c4493e460a1dea6869e853ca
+$ docker container ls | grep -v k8s
+CONTAINER ID        IMAGE                                                            COMMAND                  CREATED             STATUS              PORTS                                                                NAMES
+cec8d14083eb        nginx                                                            "nginx -g 'daemon ..."   6 seconds ago       Up 6 seconds        80/tcp                                                               flamboyant_wozniak
+ff04e7b3ccac        nginx                                                            "nginx -g 'daemon ..."   11 minutes ago      Up About a minute   80/tcp                                                               silly_hoover
+$
