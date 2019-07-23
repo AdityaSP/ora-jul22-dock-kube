@@ -534,3 +534,1049 @@ CONTAINER ID        IMAGE                                                       
             31013 30988 httpd -D FOREGROUND
 
 ############################################################################################
+
+
+
+
+
+
+--------------------------------------------------------------------------------------------------------------
+
+
+/c/Users/Dell lap/docker-workshop/jul22/app> cd
+
+/home/docker> docker container run -d -v /var/log/apache2 app
+2b5c2ea11b2a2dd4e01d012f9b7458a3338b037c77707f6e8125b04b69b36a8e
+
+/home/docker> docker container inspect 2b5c2ea
+[
+    {
+        "Id": "2b5c2ea11b2a2dd4e01d012f9b7458a3338b037c77707f6e8125b04b69b36a8e",
+        "Created": "2019-07-23T19:14:06.655032873Z",
+        "Path": "httpd",
+        "Args": [
+            "-D",
+            "FOREGROUND"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 19415,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2019-07-23T19:14:07.736020024Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:8451096077fdb266ea5f96439edfa3f5c2f4e6b21e04a01e9606e8678dce8458",
+        "ResolvConfPath": "/var/lib/docker/containers/2b5c2ea11b2a2dd4e01d012f9b7458a3338b037c77707f6e8125b04b69b36a8e/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/2b5c2ea11b2a2dd4e01d012f9b7458a3338b037c77707f6e8125b04b69b36a8e/hostname",
+        "HostsPath": "/var/lib/docker/containers/2b5c2ea11b2a2dd4e01d012f9b7458a3338b037c77707f6e8125b04b69b36a8e/hosts",
+        "LogPath": "/var/lib/docker/containers/2b5c2ea11b2a2dd4e01d012f9b7458a3338b037c77707f6e8125b04b69b36a8e/2b5c2ea11b2a2dd4e01d012f9b7458a3338b037c77707f6e8125b04b69b36a8e-json.log",
+        "Name": "/fervent_feynman",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": null,
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "default",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "CapAdd": null,
+            "CapDrop": null,
+            "Dns": [],
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "shareable",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": [],
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": [],
+            "DeviceCgroupRules": null,
+            "DiskQuota": 0,
+            "KernelMemory": 0,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": false,
+            "PidsLimit": 0,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0
+        },
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/da644426a0f1dafc73b3e6198acda629812d1f82e2faa9820385f415202a1f6b-init/diff:/var/lib/docker/overlay2/ee7d3e7fef7a1761c96caf3515640a056e68c4d13d53a33385566ef59cdef2f3/diff:/var/lib/docker/overlay2/47ca527efa5382f61e09e8251f16db43ed199b88ffb4080e9437abebc3c425d3/diff:/var/lib/docker/overlay2/0d5312a27600642d5d6ce12b25a7ee767db0ccb569146003461c7973044bbdf6/diff:/var/lib/docker/overlay2/1dd51d90d781edf2cc9108d65a78692e3ed4331efd1275ea3511b51e6cc0095d/diff",
+                "MergedDir": "/var/lib/docker/overlay2/da644426a0f1dafc73b3e6198acda629812d1f82e2faa9820385f415202a1f6b/merged",
+                "UpperDir": "/var/lib/docker/overlay2/da644426a0f1dafc73b3e6198acda629812d1f82e2faa9820385f415202a1f6b/diff",
+                "WorkDir": "/var/lib/docker/overlay2/da644426a0f1dafc73b3e6198acda629812d1f82e2faa9820385f415202a1f6b/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [
+            {
+                "Type": "volume",
+                "Name": "fc28640c0a2378b7588124ce98ccb4a93219551c9be3d9d46aa1e99532f1f6d5",
+                "Source": "/var/lib/docker/volumes/fc28640c0a2378b7588124ce98ccb4a93219551c9be3d9d46aa1e99532f1f6d5/_data",
+                "Destination": "/var/log/apache2",
+                "Driver": "local",
+                "Mode": "",
+                "RW": true,
+                "Propagation": ""
+            }
+        ],
+        "Config": {
+            "Hostname": "2b5c2ea11b2a",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+            ],
+            "Cmd": [
+                "httpd",
+                "-D",
+                "FOREGROUND"
+            ],
+            "ArgsEscaped": true,
+            "Image": "app",
+            "Volumes": {
+                "/var/log/apache2": {}
+            },
+            "WorkingDir": "",
+            "Entrypoint": null,
+            "OnBuild": null,
+            "Labels": {}
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "5cf02002adf0e02d1aed86b5c000f8cad4b86e6854c6e4d3070811ee075939b7",
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "Ports": {},
+            "SandboxKey": "/var/run/docker/netns/5cf02002adf0",
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "98ebfa8c8c7111ed1920871929e634803e82501777ad8184ad65f6dfe7640bc2",
+            "Gateway": "172.17.0.1",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "172.17.0.14",
+            "IPPrefixLen": 16,
+            "IPv6Gateway": "",
+            "MacAddress": "02:42:ac:11:00:0e",
+            "Networks": {
+                "bridge": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "NetworkID": "21c8bd94b29253ecb335b3e114dac281bcd724760d6c307e746094c0ac2e6388",
+                    "EndpointID": "98ebfa8c8c7111ed1920871929e634803e82501777ad8184ad65f6dfe7640bc2",
+                    "Gateway": "172.17.0.1",
+                    "IPAddress": "172.17.0.14",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "MacAddress": "02:42:ac:11:00:0e",
+                    "DriverOpts": null
+                }
+            }
+        }
+    }
+]
+
+/home/docker> ^C
+
+/home/docker> docker container rm -f 2b5c2ea                                                    2b5c2ea
+
+/home/docker>
+
+/home/docker> docker image ls mysql
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+mysql               5.7                 98455b9624a9        3 months ago        372MB
+
+/home/docker> docker container run --rm app env
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+HOSTNAME=a108aa33653d
+HOME=/root
+
+/home/docker> docker container run --rm -e VAR=hello app env
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+HOSTNAME=7b92bbffda40
+VAR=hello
+HOME=/root
+
+/home/docker> docker container run -d -e MYSQL_ROOT_PASSWORD=welcome mysql:5.7
+1e74432720dccfdf1f6b8d76a3958bb608e36db8afbc2d7f5c023f20864e92a2
+
+/home/docker> docker contianer ls | grep -v k8s
+docker: 'contianer' is not a docker command.
+See 'docker --help'
+
+/home/docker> docker container ls | grep -v k8s
+CONTAINER ID        IMAGE                                                            COMMAND                  CREATED             STATUS              PORTS                                                                NAMES
+1e74432720dc        mysql:5.7                                                        "docker-entrypoint..."   16 seconds ago      Up 14 seconds       3306/tcp, 33060/tcp                                                  youthful_swartz
+
+/home/docker> docker container logs -f 1e74432720dc
+Initializing database
+2019-07-23T19:26:40.586863Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2019-07-23T19:26:44.254097Z 0 [Warning] InnoDB: New log files created, LSN=45790
+2019-07-23T19:26:44.805923Z 0 [Warning] InnoDB: Creating foreign key constraint system tables.
+2019-07-23T19:26:45.296230Z 0 [Warning] No existing UUID has been found, so we assume that this is the first time that this server has been started. Generating a new UUID: cec4ba04-ad7f-11e9-87e8-0242ac11000e.
+2019-07-23T19:26:45.299125Z 0 [Warning] Gtid table is not ready to be used. Table 'mysql.gtid_executed' cannot be opened.
+2019-07-23T19:26:45.300175Z 1 [Warning] root@localhost is created with an empty password ! Please consider switching off the --initialize-insecure option.
+2019-07-23T19:26:47.410498Z 1 [Warning] 'user' entry 'root@localhost' ignored in --skip-name-resolve mode.
+2019-07-23T19:26:47.410834Z 1 [Warning] 'user' entry 'mysql.session@localhost' ignored in --skip-name-resolve mode.
+2019-07-23T19:26:47.411053Z 1 [Warning] 'user' entry 'mysql.sys@localhost' ignored in --skip-name-resolve mode.
+2019-07-23T19:26:47.411206Z 1 [Warning] 'db' entry 'performance_schema mysql.session@localhost' ignored in --skip-name-resolve mode.
+2019-07-23T19:26:47.411277Z 1 [Warning] 'db' entry 'sys mysql.sys@localhost' ignored in --skip-name-resolve mode.
+2019-07-23T19:26:47.411389Z 1 [Warning] 'proxies_priv' entry '@ root@localhost' ignored in --skip-name-resolve mode.
+2019-07-23T19:26:47.411807Z 1 [Warning] 'tables_priv' entry 'user mysql.session@localhost' ignored in --skip-name-resolve mode.
+2019-07-23T19:26:47.411852Z 1 [Warning] 'tables_priv' entry 'sys_config mysql.sys@localhost' ignored in --skip-name-resolve mode.
+Database initialized
+Initializing certificates
+Generating a RSA private key
+........................................+++++
+..............+++++
+unable to write 'random state'
+writing new private key to 'ca-key.pem'
+-----
+Generating a RSA private key
+.+++++
+.................+++++
+unable to write 'random state'
+writing new private key to 'server-key.pem'
+-----
+Generating a RSA private key
+.....................................................................+++++
+..........................................+++++
+unable to write 'random state'
+writing new private key to 'client-key.pem'
+-----
+Certificates initialized
+MySQL init process in progress...
+MySQL init process in progress...
+MySQL init process in progress...
+MySQL init process in progress...
+MySQL init process in progress...
+MySQL init process in progress...
+MySQL init process in progress...
+MySQL init process in progress...
+MySQL init process in progress...
+2019-07-23T19:27:04.393092Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2019-07-23T19:27:04.791942Z 0 [Note] mysqld (mysqld 5.7.25) starting as process 89 ...
+2019-07-23T19:27:06.086111Z 0 [Note] InnoDB: PUNCH HOLE support available
+2019-07-23T19:27:06.086244Z 0 [Note] InnoDB: Mutexes and rw_locks use GCC atomic builtins
+2019-07-23T19:27:06.086256Z 0 [Note] InnoDB: Uses event mutexes
+2019-07-23T19:27:06.086263Z 0 [Note] InnoDB: GCC builtin __atomic_thread_fence() is used for memory barrier
+2019-07-23T19:27:06.086270Z 0 [Note] InnoDB: Compressed tables use zlib 1.2.11
+2019-07-23T19:27:06.086277Z 0 [Note] InnoDB: Using Linux native AIO
+2019-07-23T19:27:06.089240Z 0 [Note] InnoDB: Number of pools: 1
+2019-07-23T19:27:06.092504Z 0 [Note] InnoDB: Using CPU crc32 instructions
+MySQL init process in progress...
+2019-07-23T19:27:06.581023Z 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2019-07-23T19:27:06.882763Z 0 [Note] InnoDB: Completed initialization of buffer pool
+2019-07-23T19:27:07.478940Z 0 [Note] InnoDB: If the mysqld execution user is authorized, page cleaner thread priority can be changed. See the man page of setpriority().
+2019-07-23T19:27:07.501185Z 0 [Note] InnoDB: Highest supported file format is Barracuda.
+MySQL init process in progress...
+2019-07-23T19:27:08.909907Z 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2019-07-23T19:27:10.442398Z 0 [Note] InnoDB: Setting file './ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+MySQL init process in progress...
+MySQL init process in progress...
+2019-07-23T19:27:11.730141Z 0 [Note] InnoDB: File './ibtmp1' size is now 12 MB.
+2019-07-23T19:27:11.731195Z 0 [Note] InnoDB: 96 redo rollback segment(s) found. 96 redo rollback segment(s) are active.
+2019-07-23T19:27:11.731228Z 0 [Note] InnoDB: 32 non-redo rollback segment(s) are active.
+2019-07-23T19:27:11.731991Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-23T19:27:11.783476Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-23T19:27:11.834223Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-23T19:27:11.885303Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-23T19:27:11.936350Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-23T19:27:11.987068Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-23T19:27:12.037784Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-23T19:27:12.088654Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-23T19:27:12.139502Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-23T19:27:12.190387Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-23T19:27:12.241206Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-23T19:27:12.291417Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-23T19:27:12.341937Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-23T19:27:12.392758Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-23T19:27:12.443659Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-23T19:27:12.493872Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-23T19:27:12.544198Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-23T19:27:12.594589Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-23T19:27:12.644869Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-23T19:27:12.695283Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-23T19:27:12.746405Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-23T19:27:12.803003Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-23T19:27:12.854740Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-23T19:27:12.908923Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-23T19:27:12.959894Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-23T19:27:13.017871Z 0 [Note] InnoDB: Waiting for purge to start
+MySQL init process in progress...
+2019-07-23T19:27:13.069343Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-23T19:27:13.119641Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-23T19:27:13.169966Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-23T19:27:13.220503Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-23T19:27:13.271483Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-23T19:27:13.322067Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-23T19:27:13.372320Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-23T19:27:13.423156Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-23T19:27:13.473918Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-23T19:27:13.524791Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-23T19:27:13.575863Z 0 [Note] InnoDB: page_cleaner: 1000ms intended loop took 6097ms. The settings might not be optimal. (flushed=0 and evicted=0, during the time.)
+2019-07-23T19:27:13.596052Z 0 [Note] InnoDB: 5.7.25 started; log sequence number 2524141
+2019-07-23T19:27:13.863868Z 0 [Note] InnoDB: Loading buffer pool(s) from /var/lib/mysql/ib_buffer_pool
+MySQL init process in progress...
+MySQL init process in progress...
+2019-07-23T19:27:15.395680Z 0 [Note] Plugin 'FEDERATED' is disabled.
+MySQL init process in progress...
+2019-07-23T19:27:16.067734Z 0 [Note] InnoDB: Buffer pool(s) load completed at 190723 19:27:16
+2019-07-23T19:27:16.906183Z 0 [Note] Found ca.pem, server-cert.pem and server-key.pem in data directory. Trying to enable SSL support using them.
+MySQL init process in progress...
+2019-07-23T19:27:17.153648Z 0 [Warning] CA certificate ca.pem is self signed.
+2019-07-23T19:27:17.550761Z 0 [Warning] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+2019-07-23T19:27:17.559528Z 0 [Warning] 'user' entry 'root@localhost' ignored in --skip-name-resolve mode.
+2019-07-23T19:27:17.559704Z 0 [Warning] 'user' entry 'mysql.session@localhost' ignored in --skip-name-resolve mode.
+2019-07-23T19:27:17.559728Z 0 [Warning] 'user' entry 'mysql.sys@localhost' ignored in --skip-name-resolve mode.
+2019-07-23T19:27:17.560132Z 0 [Warning] 'db' entry 'performance_schema mysql.session@localhost' ignored in --skip-name-resolve mode.
+2019-07-23T19:27:17.560175Z 0 [Warning] 'db' entry 'sys mysql.sys@localhost' ignored in --skip-name-resolve mode.
+2019-07-23T19:27:17.560439Z 0 [Warning] 'proxies_priv' entry '@ root@localhost' ignored in --skip-name-resolve mode.
+2019-07-23T19:27:17.571223Z 0 [Warning] 'tables_priv' entry 'user mysql.session@localhost' ignored in --skip-name-resolve mode.
+2019-07-23T19:27:17.571250Z 0 [Warning] 'tables_priv' entry 'sys_config mysql.sys@localhost' ignored in --skip-name-resolve mode.
+2019-07-23T19:27:18.547341Z 0 [Note] Event Scheduler: Loaded 0 events
+2019-07-23T19:27:18.547867Z 0 [Note] mysqld: ready for connections.
+Version: '5.7.25'  socket: '/var/run/mysqld/mysqld.sock'  port: 0  MySQL Community Server (GPL)
+Warning: Unable to load '/usr/share/zoneinfo/iso3166.tab' as time zone. Skipping it.
+Warning: Unable to load '/usr/share/zoneinfo/leap-seconds.list' as time zone. Skipping it.
+2019-07-23T19:27:40.851741Z 0 [Note] InnoDB: page_cleaner: 1000ms intended loop took 9986ms. The settings might not be optimal. (flushed=200 and evicted=0, during the time.)
+Warning: Unable to load '/usr/share/zoneinfo/zone.tab' as time zone. Skipping it.
+Warning: Unable to load '/usr/share/zoneinfo/zone1970.tab' as time zone. Skipping it.
+2019-07-23T19:27:53.954372Z 0 [Note] InnoDB: page_cleaner: 1000ms intended loop took 7379ms. The settings might not be optimal. (flushed=1 and evicted=0, during the time.)
+2019-07-23T19:27:55.285842Z 4 [Warning] 'user' entry 'root@localhost' ignored in --skip-name-resolve mode.
+2019-07-23T19:27:55.286480Z 4 [Warning] 'user' entry 'mysql.session@localhost' ignored in --skip-name-resolve mode.
+2019-07-23T19:27:55.286542Z 4 [Warning] 'user' entry 'mysql.sys@localhost' ignored in --skip-name-resolve mode.
+2019-07-23T19:27:55.286738Z 4 [Warning] 'db' entry 'performance_schema mysql.session@localhost' ignored in --skip-name-resolve mode.
+2019-07-23T19:27:55.286753Z 4 [Warning] 'db' entry 'sys mysql.sys@localhost' ignored in --skip-name-resolve mode.
+2019-07-23T19:27:55.286773Z 4 [Warning] 'proxies_priv' entry '@ root@localhost' ignored in --skip-name-resolve mode.
+2019-07-23T19:27:55.286863Z 4 [Warning] 'tables_priv' entry 'user mysql.session@localhost' ignored in --skip-name-resolve mode.
+2019-07-23T19:27:55.286880Z 4 [Warning] 'tables_priv' entry 'sys_config mysql.sys@localhost' ignored in --skip-name-resolve mode.
+
+2019-07-23T19:27:55.596933Z 0 [Note] Giving 0 client threads a chance to die gracefully
+2019-07-23T19:27:55.596974Z 0 [Note] Shutting down slave threads
+2019-07-23T19:27:55.597330Z 0 [Note] Forcefully disconnecting 0 remaining clients
+2019-07-23T19:27:55.597352Z 0 [Note] Event Scheduler: Purging the queue. 0 events
+2019-07-23T19:27:55.598145Z 0 [Note] Binlog end
+2019-07-23T19:27:55.600180Z 0 [Note] Shutting down plugin 'ngram'
+2019-07-23T19:27:55.600250Z 0 [Note] Shutting down plugin 'partition'
+2019-07-23T19:27:55.600256Z 0 [Note] Shutting down plugin 'BLACKHOLE'
+2019-07-23T19:27:55.600705Z 0 [Note] Shutting down plugin 'ARCHIVE'
+2019-07-23T19:27:55.600718Z 0 [Note] Shutting down plugin 'PERFORMANCE_SCHEMA'
+2019-07-23T19:27:55.600982Z 0 [Note] Shutting down plugin 'MRG_MYISAM'
+2019-07-23T19:27:55.601043Z 0 [Note] Shutting down plugin 'MyISAM'
+2019-07-23T19:27:55.601661Z 0 [Note] Shutting down plugin 'INNODB_SYS_VIRTUAL'
+2019-07-23T19:27:55.602280Z 0 [Note] Shutting down plugin 'INNODB_SYS_DATAFILES'
+2019-07-23T19:27:55.602339Z 0 [Note] Shutting down plugin 'INNODB_SYS_TABLESPACES'
+2019-07-23T19:27:55.602346Z 0 [Note] Shutting down plugin 'INNODB_SYS_FOREIGN_COLS'
+2019-07-23T19:27:55.602351Z 0 [Note] Shutting down plugin 'INNODB_SYS_FOREIGN'
+2019-07-23T19:27:55.602354Z 0 [Note] Shutting down plugin 'INNODB_SYS_FIELDS'
+2019-07-23T19:27:55.602357Z 0 [Note] Shutting down plugin 'INNODB_SYS_COLUMNS'
+2019-07-23T19:27:55.602361Z 0 [Note] Shutting down plugin 'INNODB_SYS_INDEXES'
+2019-07-23T19:27:55.602364Z 0 [Note] Shutting down plugin 'INNODB_SYS_TABLESTATS'
+2019-07-23T19:27:55.602368Z 0 [Note] Shutting down plugin 'INNODB_SYS_TABLES'
+2019-07-23T19:27:55.602371Z 0 [Note] Shutting down plugin 'INNODB_FT_INDEX_TABLE'
+2019-07-23T19:27:55.602374Z 0 [Note] Shutting down plugin 'INNODB_FT_INDEX_CACHE'
+2019-07-23T19:27:55.602378Z 0 [Note] Shutting down plugin 'INNODB_FT_CONFIG'
+2019-07-23T19:27:55.602381Z 0 [Note] Shutting down plugin 'INNODB_FT_BEING_DELETED'
+2019-07-23T19:27:55.602385Z 0 [Note] Shutting down plugin 'INNODB_FT_DELETED'
+2019-07-23T19:27:55.602388Z 0 [Note] Shutting down plugin 'INNODB_FT_DEFAULT_STOPWORD'
+2019-07-23T19:27:55.602391Z 0 [Note] Shutting down plugin 'INNODB_METRICS'
+2019-07-23T19:27:55.602394Z 0 [Note] Shutting down plugin 'INNODB_TEMP_TABLE_INFO'
+2019-07-23T19:27:55.602397Z 0 [Note] Shutting down plugin 'INNODB_BUFFER_POOL_STATS'
+2019-07-23T19:27:55.602400Z 0 [Note] Shutting down plugin 'INNODB_BUFFER_PAGE_LRU'
+2019-07-23T19:27:55.602403Z 0 [Note] Shutting down plugin 'INNODB_BUFFER_PAGE'
+2019-07-23T19:27:55.602406Z 0 [Note] Shutting down plugin 'INNODB_CMP_PER_INDEX_RESET'
+2019-07-23T19:27:55.602409Z 0 [Note] Shutting down plugin 'INNODB_CMP_PER_INDEX'
+2019-07-23T19:27:55.602412Z 0 [Note] Shutting down plugin 'INNODB_CMPMEM_RESET'
+2019-07-23T19:27:55.602415Z 0 [Note] Shutting down plugin 'INNODB_CMPMEM'
+2019-07-23T19:27:55.602418Z 0 [Note] Shutting down plugin 'INNODB_CMP_RESET'
+2019-07-23T19:27:55.602422Z 0 [Note] Shutting down plugin 'INNODB_CMP'
+2019-07-23T19:27:55.602426Z 0 [Note] Shutting down plugin 'INNODB_LOCK_WAITS'
+2019-07-23T19:27:55.602429Z 0 [Note] Shutting down plugin 'INNODB_LOCKS'
+2019-07-23T19:27:55.602433Z 0 [Note] Shutting down plugin 'INNODB_TRX'
+2019-07-23T19:27:55.602436Z 0 [Note] Shutting down plugin 'InnoDB'
+2019-07-23T19:27:55.604044Z 0 [Note] InnoDB: FTS optimize thread exiting.
+2019-07-23T19:27:55.612799Z 0 [Note] InnoDB: Starting shutdown...
+2019-07-23T19:27:55.714032Z 0 [Note] InnoDB: Dumping buffer pool(s) to /var/lib/mysql/ib_buffer_pool
+2019-07-23T19:27:55.786638Z 0 [Note] InnoDB: Buffer pool(s) dump completed at 190723 19:27:55
+2019-07-23T19:27:57.133453Z 0 [Note] InnoDB: Shutdown completed; log sequence number 12358963
+2019-07-23T19:27:57.133949Z 0 [Note] InnoDB: Removed temporary tablespace data file: "ibtmp1"
+2019-07-23T19:27:57.133999Z 0 [Note] Shutting down plugin 'MEMORY'
+2019-07-23T19:27:57.134014Z 0 [Note] Shutting down plugin 'CSV'
+2019-07-23T19:27:57.134023Z 0 [Note] Shutting down plugin 'sha256_password'
+2019-07-23T19:27:57.134027Z 0 [Note] Shutting down plugin 'mysql_native_password'
+2019-07-23T19:27:57.135700Z 0 [Note] Shutting down plugin 'binlog'
+2019-07-23T19:27:57.142143Z 0 [Note] mysqld: Shutdown complete
+
+
+MySQL init process done. Ready for start up.
+
+2019-07-23T19:27:57.455287Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2019-07-23T19:27:57.457249Z 0 [Note] mysqld (mysqld 5.7.25) starting as process 1 ...
+2019-07-23T19:27:57.479682Z 0 [Note] InnoDB: PUNCH HOLE support available
+2019-07-23T19:27:57.486637Z 0 [Note] InnoDB: Mutexes and rw_locks use GCC atomic builtins
+2019-07-23T19:27:57.486746Z 0 [Note] InnoDB: Uses event mutexes
+2019-07-23T19:27:57.486758Z 0 [Note] InnoDB: GCC builtin __atomic_thread_fence() is used for memory barrier
+2019-07-23T19:27:57.486765Z 0 [Note] InnoDB: Compressed tables use zlib 1.2.11
+2019-07-23T19:27:57.486772Z 0 [Note] InnoDB: Using Linux native AIO
+2019-07-23T19:27:57.487179Z 0 [Note] InnoDB: Number of pools: 1
+2019-07-23T19:27:57.488333Z 0 [Note] InnoDB: Using CPU crc32 instructions
+2019-07-23T19:27:57.491295Z 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2019-07-23T19:27:57.508926Z 0 [Note] InnoDB: Completed initialization of buffer pool
+2019-07-23T19:27:57.727427Z 0 [Note] InnoDB: If the mysqld execution user is authorized, page cleaner thread priority can be changed. See the man page of setpriority().
+2019-07-23T19:27:58.339129Z 0 [Note] InnoDB: Highest supported file format is Barracuda.
+2019-07-23T19:27:58.603161Z 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2019-07-23T19:27:58.603258Z 0 [Note] InnoDB: Setting file './ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2019-07-23T19:27:59.096768Z 0 [Note] InnoDB: File './ibtmp1' size is now 12 MB.
+2019-07-23T19:27:59.102274Z 0 [Note] InnoDB: 96 redo rollback segment(s) found. 96 redo rollback segment(s) are active.
+2019-07-23T19:27:59.102332Z 0 [Note] InnoDB: 32 non-redo rollback segment(s) are active.
+2019-07-23T19:27:59.109886Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-23T19:27:59.160938Z 0 [Note] InnoDB: 5.7.25 started; log sequence number 12358963
+2019-07-23T19:27:59.162546Z 0 [Note] InnoDB: Loading buffer pool(s) from /var/lib/mysql/ib_buffer_pool
+2019-07-23T19:27:59.164619Z 0 [Note] Plugin 'FEDERATED' is disabled.
+2019-07-23T19:27:59.388730Z 0 [Note] Found ca.pem, server-cert.pem and server-key.pem in data directory. Trying to enable SSL support using them.
+2019-07-23T19:27:59.390253Z 0 [Warning] CA certificate ca.pem is self signed.
+2019-07-23T19:27:59.400983Z 0 [Note] Server hostname (bind-address): '*'; port: 3306
+2019-07-23T19:27:59.401147Z 0 [Note] IPv6 is available.
+2019-07-23T19:27:59.402008Z 0 [Note]   - '::' resolves to '::';
+2019-07-23T19:27:59.402109Z 0 [Note] Server socket created on IP: '::'.
+2019-07-23T19:27:59.407987Z 0 [Warning] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+2019-07-23T19:27:59.414911Z 0 [Warning] 'user' entry 'root@localhost' ignored in --skip-name-resolve mode.
+2019-07-23T19:27:59.414985Z 0 [Warning] 'user' entry 'mysql.session@localhost' ignored in --skip-name-resolve mode.
+2019-07-23T19:27:59.415004Z 0 [Warning] 'user' entry 'mysql.sys@localhost' ignored in --skip-name-resolve mode.
+2019-07-23T19:27:59.415044Z 0 [Warning] 'db' entry 'performance_schema mysql.session@localhost' ignored in --skip-name-resolve mode.
+2019-07-23T19:27:59.415052Z 0 [Warning] 'db' entry 'sys mysql.sys@localhost' ignored in --skip-name-resolve mode.
+2019-07-23T19:27:59.415067Z 0 [Warning] 'proxies_priv' entry '@ root@localhost' ignored in --skip-name-resolve mode.
+2019-07-23T19:27:59.439695Z 0 [Warning] 'tables_priv' entry 'user mysql.session@localhost' ignored in --skip-name-resolve mode.
+2019-07-23T19:27:59.439755Z 0 [Warning] 'tables_priv' entry 'sys_config mysql.sys@localhost' ignored in --skip-name-resolve mode.
+2019-07-23T19:27:59.825240Z 0 [Note] Event Scheduler: Loaded 0 events
+2019-07-23T19:27:59.825755Z 0 [Note] mysqld: ready for connections.
+Version: '5.7.25'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server (GPL)
+2019-07-23T19:27:59.836312Z 0 [Note] InnoDB: Buffer pool(s) load completed at 190723 19:27:59
+^C
+
+/home/docker> docker contianer ls | grep -v k8s
+docker: 'contianer' is not a docker command.
+See 'docker --help'
+
+/home/docker> docker container ls | grep -v k8s
+CONTAINER ID        IMAGE                                                            COMMAND                  CREATED              STATUS              PORTS                                                                NAMES
+1e74432720dc        mysql:5.7                                                        "docker-entrypoint..."   About a minute ago   Up About a minute   3306/tcp, 33060/tcp                                                  youthful_swartz
+
+/home/docker> docker container inspect 1e74432720dc
+[
+    {
+        "Id": "1e74432720dccfdf1f6b8d76a3958bb608e36db8afbc2d7f5c023f20864e92a2",
+        "Created": "2019-07-23T19:26:35.273909207Z",
+        "Path": "docker-entrypoint.sh",
+        "Args": [
+            "mysqld"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 22012,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2019-07-23T19:26:36.88520218Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:98455b9624a96e32b353297bb312913b6bbd62ac195cea2c7dd477209ba572d6",
+        "ResolvConfPath": "/var/lib/docker/containers/1e74432720dccfdf1f6b8d76a3958bb608e36db8afbc2d7f5c023f20864e92a2/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/1e74432720dccfdf1f6b8d76a3958bb608e36db8afbc2d7f5c023f20864e92a2/hostname",
+        "HostsPath": "/var/lib/docker/containers/1e74432720dccfdf1f6b8d76a3958bb608e36db8afbc2d7f5c023f20864e92a2/hosts",
+        "LogPath": "/var/lib/docker/containers/1e74432720dccfdf1f6b8d76a3958bb608e36db8afbc2d7f5c023f20864e92a2/1e74432720dccfdf1f6b8d76a3958bb608e36db8afbc2d7f5c023f20864e92a2-json.log",
+        "Name": "/youthful_swartz",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": null,
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "default",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "CapAdd": null,
+            "CapDrop": null,
+            "Dns": [],
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "shareable",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": [],
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": [],
+            "DeviceCgroupRules": null,
+            "DiskQuota": 0,
+            "KernelMemory": 0,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": false,
+            "PidsLimit": 0,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0
+        },
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/a8231c10e01004705980b73800a29fb12f1734ca15850787eb980138ce8db418-init/diff:/var/lib/docker/overlay2/f95d04501842878f6f0cb65e1babbe4391f198d2cd8c62fb5ecd68213e8b4e04/diff:/var/lib/docker/overlay2/c47572ae22f63388ccfad6903eb662c13aade2cf389ffa7e42706337664972a4/diff:/var/lib/docker/overlay2/d1b27408bae854e447be497bff2a4823d8f247dd83febf0014e3814d4c8326b9/diff:/var/lib/docker/overlay2/ca1941dcf6039436d59f32ef2cddd93693cdcd62719395613df86c535aefa21c/diff:/var/lib/docker/overlay2/578149c9b872c749a39b5412a05191d3d2db7998c97b9a19a09d4e65f146bbdd/diff:/var/lib/docker/overlay2/655d460c52c1335b0276d356a92c4bfdcb4a148f2f8023783fefe537d7234e63/diff:/var/lib/docker/overlay2/25a6407eb87113648ab6ad1f6259d6e6688d24fc7fba50525948eb1e91a560bc/diff:/var/lib/docker/overlay2/4672f32e5b4c0ea1e42ba18573998500e69c5adc8852bd5ee521ef61f90e7041/diff:/var/lib/docker/overlay2/1ca311840cc5887a1ae3292d21aa781beb3142ff5404077a3ecc3da90b192c48/diff:/var/lib/docker/overlay2/d0c0ff8832d4453daf41211039390e4ef9ef781b17e9066c674ee14d45b37ac7/diff:/var/lib/docker/overlay2/4109b70c300b5a4a8e0b41d04bf5182a53cb7dbda605612f9c8cc43292fa3bb8/diff",
+                "MergedDir": "/var/lib/docker/overlay2/a8231c10e01004705980b73800a29fb12f1734ca15850787eb980138ce8db418/merged",
+                "UpperDir": "/var/lib/docker/overlay2/a8231c10e01004705980b73800a29fb12f1734ca15850787eb980138ce8db418/diff",
+                "WorkDir": "/var/lib/docker/overlay2/a8231c10e01004705980b73800a29fb12f1734ca15850787eb980138ce8db418/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [
+            {
+                "Type": "volume",
+                "Name": "d96b3c9aa2c7393eee5173613e53e4d9a01522d00919ba9575480711a483bdc2",
+                "Source": "/var/lib/docker/volumes/d96b3c9aa2c7393eee5173613e53e4d9a01522d00919ba9575480711a483bdc2/_data",
+                "Destination": "/var/lib/mysql",
+                "Driver": "local",
+                "Mode": "",
+                "RW": true,
+                "Propagation": ""
+            }
+        ],
+        "Config": {
+            "Hostname": "1e74432720dc",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "3306/tcp": {},
+                "33060/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "MYSQL_ROOT_PASSWORD=welcome",
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "GOSU_VERSION=1.7",
+                "MYSQL_MAJOR=5.7",
+                "MYSQL_VERSION=5.7.25-1debian9"
+            ],
+            "Cmd": [
+                "mysqld"
+            ],
+            "ArgsEscaped": true,
+            "Image": "mysql:5.7",
+            "Volumes": {
+                "/var/lib/mysql": {}
+            },
+            "WorkingDir": "",
+            "Entrypoint": [
+                "docker-entrypoint.sh"
+            ],
+            "OnBuild": null,
+            "Labels": {}
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "1f6e65dfb845775f97c5f3081dc2122fdb4776027b7bfe9e9fb779f722935d84",
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "Ports": {
+                "3306/tcp": null,
+                "33060/tcp": null
+            },
+            "SandboxKey": "/var/run/docker/netns/1f6e65dfb845",
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "943a9024cf380064fc42e3461bac1df568aa2aadb078f4efefb82155c7a2e791",
+            "Gateway": "172.17.0.1",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "172.17.0.14",
+            "IPPrefixLen": 16,
+            "IPv6Gateway": "",
+            "MacAddress": "02:42:ac:11:00:0e",
+            "Networks": {
+                "bridge": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "NetworkID": "21c8bd94b29253ecb335b3e114dac281bcd724760d6c307e746094c0ac2e6388",
+                    "EndpointID": "943a9024cf380064fc42e3461bac1df568aa2aadb078f4efefb82155c7a2e791",
+                    "Gateway": "172.17.0.1",
+                    "IPAddress": "172.17.0.14",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "MacAddress": "02:42:ac:11:00:0e",
+                    "DriverOpts": null
+                }
+            }
+        }
+    }
+]
+
+/home/docker>
+
+/home/docker> docker container ls | grep -v k8s
+CONTAINER ID        IMAGE                                                            COMMAND                  CREATED             STATUS              PORTS                                                                NAMES
+1e74432720dc        mysql:5.7                                                        "docker-entrypoint..."   10 minutes ago      Up 10 minutes       3306/tcp, 33060/tcp                                                  youthful_swartz
+
+/home/docker> docker container rm -f 1e74432720dc
+1e74432720dc
+
+/home/docker> docker container run -d -v proj_db:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=welcome mysql:5.7
+fe568871a2c3753a5da2761ad95b94f1977ea460f60f8465d0413bbbc50253aa
+
+/home/docker> docker container inpsect fe568871
+
+Usage:  docker container COMMAND
+
+Manage containers
+
+Options:
+      --help   Print usage
+
+Commands:
+  attach      Attach local standard input, output, and error streams to a running container
+  commit      Create a new image from a container's changes
+  cp          Copy files/folders between a container and the local filesystem
+  create      Create a new container
+  diff        Inspect changes to files or directories on a container's filesystem
+  exec        Run a command in a running container
+  export      Export a container's filesystem as a tar archive
+  inspect     Display detailed information on one or more containers
+  kill        Kill one or more running containers
+  logs        Fetch the logs of a container
+  ls          List containers
+  pause       Pause all processes within one or more containers
+  port        List port mappings or a specific mapping for the container
+  prune       Remove all stopped containers
+  rename      Rename a container
+  restart     Restart one or more containers
+  rm          Remove one or more containers
+  run         Run a command in a new container
+  start       Start one or more stopped containers
+  stats       Display a live stream of container(s) resource usage statistics
+  stop        Stop one or more running containers
+  top         Display the running processes of a container
+  unpause     Unpause all processes within one or more containers
+  update      Update configuration of one or more containers
+  wait        Block until one or more containers stop, then print their exit codes
+
+Run 'docker container COMMAND --help' for more information on a command.
+
+/home/docker> docker container inspect fe568871
+[
+    {
+        "Id": "fe568871a2c3753a5da2761ad95b94f1977ea460f60f8465d0413bbbc50253aa",
+        "Created": "2019-07-23T19:38:24.363028737Z",
+        "Path": "docker-entrypoint.sh",
+        "Args": [
+            "mysqld"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 24500,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2019-07-23T19:38:24.771102613Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:98455b9624a96e32b353297bb312913b6bbd62ac195cea2c7dd477209ba572d6",
+        "ResolvConfPath": "/var/lib/docker/containers/fe568871a2c3753a5da2761ad95b94f1977ea460f60f8465d0413bbbc50253aa/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/fe568871a2c3753a5da2761ad95b94f1977ea460f60f8465d0413bbbc50253aa/hostname",
+        "HostsPath": "/var/lib/docker/containers/fe568871a2c3753a5da2761ad95b94f1977ea460f60f8465d0413bbbc50253aa/hosts",
+        "LogPath": "/var/lib/docker/containers/fe568871a2c3753a5da2761ad95b94f1977ea460f60f8465d0413bbbc50253aa/fe568871a2c3753a5da2761ad95b94f1977ea460f60f8465d0413bbbc50253aa-json.log",
+        "Name": "/brave_thompson",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [
+                "proj_db:/var/lib/mysql"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "default",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "CapAdd": null,
+            "CapDrop": null,
+            "Dns": [],
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "shareable",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": [],
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": [],
+            "DeviceCgroupRules": null,
+            "DiskQuota": 0,
+            "KernelMemory": 0,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": false,
+            "PidsLimit": 0,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0
+        },
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/9da702e8b2f8c1372926c215ed48db0614678dc090efb765a41c0ac207302852-init/diff:/var/lib/docker/overlay2/f95d04501842878f6f0cb65e1babbe4391f198d2cd8c62fb5ecd68213e8b4e04/diff:/var/lib/docker/overlay2/c47572ae22f63388ccfad6903eb662c13aade2cf389ffa7e42706337664972a4/diff:/var/lib/docker/overlay2/d1b27408bae854e447be497bff2a4823d8f247dd83febf0014e3814d4c8326b9/diff:/var/lib/docker/overlay2/ca1941dcf6039436d59f32ef2cddd93693cdcd62719395613df86c535aefa21c/diff:/var/lib/docker/overlay2/578149c9b872c749a39b5412a05191d3d2db7998c97b9a19a09d4e65f146bbdd/diff:/var/lib/docker/overlay2/655d460c52c1335b0276d356a92c4bfdcb4a148f2f8023783fefe537d7234e63/diff:/var/lib/docker/overlay2/25a6407eb87113648ab6ad1f6259d6e6688d24fc7fba50525948eb1e91a560bc/diff:/var/lib/docker/overlay2/4672f32e5b4c0ea1e42ba18573998500e69c5adc8852bd5ee521ef61f90e7041/diff:/var/lib/docker/overlay2/1ca311840cc5887a1ae3292d21aa781beb3142ff5404077a3ecc3da90b192c48/diff:/var/lib/docker/overlay2/d0c0ff8832d4453daf41211039390e4ef9ef781b17e9066c674ee14d45b37ac7/diff:/var/lib/docker/overlay2/4109b70c300b5a4a8e0b41d04bf5182a53cb7dbda605612f9c8cc43292fa3bb8/diff",
+                "MergedDir": "/var/lib/docker/overlay2/9da702e8b2f8c1372926c215ed48db0614678dc090efb765a41c0ac207302852/merged",
+                "UpperDir": "/var/lib/docker/overlay2/9da702e8b2f8c1372926c215ed48db0614678dc090efb765a41c0ac207302852/diff",
+                "WorkDir": "/var/lib/docker/overlay2/9da702e8b2f8c1372926c215ed48db0614678dc090efb765a41c0ac207302852/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [
+            {
+                "Type": "volume",
+                "Name": "proj_db",
+                "Source": "/var/lib/docker/volumes/proj_db/_data",
+                "Destination": "/var/lib/mysql",
+                "Driver": "local",
+                "Mode": "z",
+                "RW": true,
+                "Propagation": ""
+            }
+        ],
+        "Config": {
+            "Hostname": "fe568871a2c3",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "3306/tcp": {},
+                "33060/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "MYSQL_ROOT_PASSWORD=welcome",
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "GOSU_VERSION=1.7",
+                "MYSQL_MAJOR=5.7",
+                "MYSQL_VERSION=5.7.25-1debian9"
+            ],
+            "Cmd": [
+                "mysqld"
+            ],
+            "ArgsEscaped": true,
+            "Image": "mysql:5.7",
+            "Volumes": {
+                "/var/lib/mysql": {}
+            },
+            "WorkingDir": "",
+            "Entrypoint": [
+                "docker-entrypoint.sh"
+            ],
+            "OnBuild": null,
+            "Labels": {}
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "a59f6069b3875a026e712f007d51facda76d6d89791dbdabf6abda99e17b8e4e",
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "Ports": {
+                "3306/tcp": null,
+                "33060/tcp": null
+            },
+            "SandboxKey": "/var/run/docker/netns/a59f6069b387",
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "036c7059c0d8afa2fc2675bd7ecb0a2f94108517f7a9d4db72799f8beb9b65bd",
+            "Gateway": "172.17.0.1",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "172.17.0.14",
+            "IPPrefixLen": 16,
+            "IPv6Gateway": "",
+            "MacAddress": "02:42:ac:11:00:0e",
+            "Networks": {
+                "bridge": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "NetworkID": "21c8bd94b29253ecb335b3e114dac281bcd724760d6c307e746094c0ac2e6388",
+                    "EndpointID": "036c7059c0d8afa2fc2675bd7ecb0a2f94108517f7a9d4db72799f8beb9b65bd",
+                    "Gateway": "172.17.0.1",
+                    "IPAddress": "172.17.0.14",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "MacAddress": "02:42:ac:11:00:0e",
+                    "DriverOpts": null
+                }
+            }
+        }
+    }
+]
+
+/home/docker> docker container ls | grep -v k8s
+CONTAINER ID        IMAGE                                                            COMMAND                  CREATED              STATUS              PORTS                                                                NAMES
+fe568871a2c3        mysql:5.7                                                        "docker-entrypoint..."   2 minutes ago        Up 2 minutes        3306/tcp, 33060/tcp                                                  brave_thompson
+
+/home/docker> docker container exec -it  fe56887 mysql -uroot -pwelcome
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 2
+Server version: 5.7.25 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.02 sec)
+
+mysql> create database mydb;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mydb               |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> exit
+Bye
+
+/home/docker> docker container rm -f fe56887
+fe56887
+
+/home/docker> docker container run -d -v proj_db:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=welcome mysql:5.7
+58f98b5f1a093f82b0b38a9e47084aedbfe94e1ae5fc8457e85255c399f41172
+
+/home/docker> docker container exec -it 58f98b5f mysql -uroot -pwelcome
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 2
+Server version: 5.7.25 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show database;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mydb               |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.02 sec)
+
+mysql> exit
+Bye
+
+/home/docker>
