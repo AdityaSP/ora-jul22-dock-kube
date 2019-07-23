@@ -287,3 +287,199 @@ Successfully tagged app:2
 Successfully tagged app:latest
 
 /c/Users/Dell lap/docker-workshop/jul22>
+
+
+-----------------------------------------------------------------------------------------------------
+
+
+/c/Users/Dell lap/docker-workshop/jul22> docker container ls -a| grep -v k8s
+CONTAINER ID        IMAGE                                                            COMMAND                  CREATED             STATUS                     PORTS                                                                NAMES
+
+/c/Users/Dell lap/docker-workshop/jul22> cd
+
+/home/docker> docker container run -d app
+cfffca82c75a026a3a1349c95377cca1978fd95924f08bcb53a8bb1823e6cf04
+
+/home/docker> docker container ls -a| grep -v k8s
+CONTAINER ID        IMAGE                                                            COMMAND                  CREATED             STATUS                     PORTS                                                                NAMES
+cfffca82c75a        app                                                              "/bin/sh"                9 seconds ago       Exited (0) 8 seconds ago                                                                        focused_mahavira
+
+/home/docker> docker container run -d nginx
+c24d828f327b343dadd2a673122454dfd7dcfec266a2e5f21a043854126c4996
+
+/home/docker> docker container ls -a| grep -v k8s
+CONTAINER ID        IMAGE                                                            COMMAND                  CREATED             STATUS                      PORTS                                                                NAMES
+c24d828f327b        nginx                                                            "nginx -g 'daemon ..."   8 seconds ago       Up 6 seconds                80/tcp                                                               vibrant_haibt
+cfffca82c75a        app                                                              "/bin/sh"                46 seconds ago      Exited (0) 44 seconds ago                                                                        focused_mahavira
+
+/home/docker> docker container run -d app ping google.com
+3a61799f539cdf318a7cc1dc592f675817b4158d2ca62b6f5180245df6204b2f
+
+/home/docker> docker container ls -a| grep -v k8s
+CONTAINER ID        IMAGE                                                            COMMAND                  CREATED             STATUS                     PORTS                                                                NAMES
+3a61799f539c        app                                                              "ping google.com"        6 seconds ago       Up 5 seconds                                                                                    silly_thompson
+c24d828f327b        nginx                                                            "nginx -g 'daemon ..."   3 minutes ago       Up 3 minutes               80/tcp                                                               vibrant_haibt
+cfffca82c75a        app                                                              "/bin/sh"                4 minutes ago       Exited (0) 4 minutes ago                                                                        focused_mahavira
+
+/home/docker> docker container run  app ping -c5 google.com
+ping: bad address 'google.com'
+
+/home/docker> docker container run  app ping -c5 google.com
+PING google.com (172.217.163.174): 56 data bytes
+64 bytes from 172.217.163.174: seq=0 ttl=53 time=27.655 ms
+64 bytes from 172.217.163.174: seq=1 ttl=53 time=25.461 ms
+64 bytes from 172.217.163.174: seq=2 ttl=53 time=529.445 ms
+64 bytes from 172.217.163.174: seq=3 ttl=53 time=163.150 ms
+
+--- google.com ping statistics ---
+5 packets transmitted, 4 packets received, 20% packet loss
+round-trip min/avg/max = 25.461/186.427/529.445 ms
+
+/home/docker> docker container run -d  app ping -c20 google.com
+f13dabacbea24cd545b988c82478083fb048bf3486bb697d116a0185e35cd038
+
+/home/docker> docker container ls -a| grep -v k8s
+CONTAINER ID        IMAGE                                                            COMMAND                  CREATED              STATUS                          PORTS                                                                NAMES
+f13dabacbea2        app                                                              "ping -c20 google.com"   3 seconds ago        Up 2 seconds                                                                                         competent_engelbart
+2ec7f2f1429f        app                                                              "ping -c5 google.com"    About a minute ago   Exited (0) 53 seconds ago                                                                            wizardly_austin
+77ce5a795ede        app                                                              "ping -c5 google.com"    About a minute ago   Exited (1) About a minute ago                                                                        naughty_spence
+3a61799f539c        app                                                              "ping google.com"        3 minutes ago        Up 3 minutes                                                                                         silly_thompson
+c24d828f327b        nginx                                                            "nginx -g 'daemon ..."   6 minutes ago        Up 6 minutes                    80/tcp                                                               vibrant_haibt
+cfffca82c75a        app                                                              "/bin/sh"                7 minutes ago        Exited (0) 7 minutes ago                                                                             focused_mahavira
+
+/home/docker> docker container ls -a| grep -v k8s
+CONTAINER ID        IMAGE                                                            COMMAND                  CREATED              STATUS                          PORTS                                                                NAMES
+f13dabacbea2        app                                                              "ping -c20 google.com"   25 seconds ago       Exited (0) 4 seconds ago                                                                             competent_engelbart
+2ec7f2f1429f        app                                                              "ping -c5 google.com"    About a minute ago   Exited (0) About a minute ago                                                                        wizardly_austin
+77ce5a795ede        app                                                              "ping -c5 google.com"    About a minute ago   Exited (1) About a minute ago                                                                        naughty_spence
+3a61799f539c        app                                                              "ping google.com"        3 minutes ago        Up 3 minutes                                                                                         silly_thompson
+c24d828f327b        nginx                                                            "nginx -g 'daemon ..."   7 minutes ago        Up 6 minutes                    80/tcp                                                               vibrant_haibt
+cfffca82c75a        app                                                              "/bin/sh"                7 minutes ago        Exited (0) 7 minutes ago                                                                             focused_mahavira
+
+/home/docker> docker container logs f13dabacbea2
+PING google.com (172.217.163.174): 56 data bytes
+64 bytes from 172.217.163.174: seq=0 ttl=53 time=31.507 ms
+64 bytes from 172.217.163.174: seq=1 ttl=53 time=29.871 ms
+64 bytes from 172.217.163.174: seq=2 ttl=53 time=30.019 ms
+64 bytes from 172.217.163.174: seq=3 ttl=53 time=33.985 ms
+64 bytes from 172.217.163.174: seq=4 ttl=53 time=28.638 ms
+64 bytes from 172.217.163.174: seq=5 ttl=53 time=29.875 ms
+64 bytes from 172.217.163.174: seq=6 ttl=53 time=30.004 ms
+64 bytes from 172.217.163.174: seq=7 ttl=53 time=26.112 ms
+64 bytes from 172.217.163.174: seq=8 ttl=53 time=26.455 ms
+64 bytes from 172.217.163.174: seq=9 ttl=53 time=27.092 ms
+64 bytes from 172.217.163.174: seq=10 ttl=53 time=26.447 ms
+64 bytes from 172.217.163.174: seq=11 ttl=53 time=29.099 ms
+64 bytes from 172.217.163.174: seq=12 ttl=53 time=27.920 ms
+64 bytes from 172.217.163.174: seq=13 ttl=53 time=42.582 ms
+64 bytes from 172.217.163.174: seq=14 ttl=53 time=42.308 ms
+64 bytes from 172.217.163.174: seq=15 ttl=53 time=26.721 ms
+64 bytes from 172.217.163.174: seq=16 ttl=53 time=29.646 ms
+64 bytes from 172.217.163.174: seq=17 ttl=53 time=28.265 ms
+64 bytes from 172.217.163.174: seq=18 ttl=53 time=27.546 ms
+64 bytes from 172.217.163.174: seq=19 ttl=53 time=29.615 ms
+
+--- google.com ping statistics ---
+20 packets transmitted, 20 packets received, 0% packet loss
+round-trip min/avg/max = 26.112/30.185/42.582 ms
+
+/home/docker> docker container ls -a| grep -v k8s
+CONTAINER ID        IMAGE                                                            COMMAND                  CREATED              STATUS                          PORTS                                                                NAMES
+f13dabacbea2        app                                                              "ping -c20 google.com"   About a minute ago   Exited (0) About a minute ago                                                                        competent_engelbart
+2ec7f2f1429f        app                                                              "ping -c5 google.com"    2 minutes ago        Exited (0) 2 minutes ago                                                                             wizardly_austin
+77ce5a795ede        app                                                              "ping -c5 google.com"    2 minutes ago        Exited (1) 2 minutes ago                                                                             naughty_spence
+3a61799f539c        app                                                              "ping google.com"        4 minutes ago        Up 4 minutes                                                                                         silly_thompson
+c24d828f327b        nginx                                                            "nginx -g 'daemon ..."   8 minutes ago        Up 8 minutes                    80/tcp                                                               vibrant_haibt
+cfffca82c75a        app                                                              "/bin/sh"                9 minutes ago        Exited (0) 9 minutes ago                                                                             focused_mahavira
+
+/home/docker> docker container prune
+WARNING! This will remove all stopped containers.
+Are you sure you want to continue? [y/N] y
+Deleted Containers:
+f13dabacbea24cd545b988c82478083fb048bf3486bb697d116a0185e35cd038
+2ec7f2f1429f9c1ffb6aad96af8bb4a25d56cd2651662f1c167c982ba59e0034
+77ce5a795ede7ca11bd16750fed63fb1db374172d8c49f8cc4d491d594b493ea
+cfffca82c75a026a3a1349c95377cca1978fd95924f08bcb53a8bb1823e6cf04
+b93d52ee181bfbe8d81819e2787dfcc88f11e4848ae11b5871b20fbe5fe933ab
+d08c6769d9e878b71f18a333f7ae36099ffee66c925c1fa08c74e2ea75fd6edb
+507bdc4a502f79dfc9396dc59f58a96320d71c0330e41834e35a5701062dec7a
+6316601f5f0a46b33e58ab77089abc909c2b4642a787ac3aca8d03caf7c04b05
+4b04a9b40ec46aad1e8529eee56256bb974c3354661e1d6fc01bae3e077b96ef
+632c3cd48ccb5e177780415bf991dd2c2bcb2cbaca14906f21a1c17c781f6206
+859836b781733082f13b14837e929c002c156e8b43e4c4a466afbf90728c581a
+f73c359eff0733f2b97b65e6bfd91a8b6734bc956b0842ab6107da82600f3644
+e9dc55718f88dca9cc7cf0f3bec4b7e811e9a696b59c0134bad270d4a272ece9
+4b6c5ff22ff3d125fd87476a6a66ee24d6edb7e3aaf15dc5b0087851e256edb6
+1bbec8d5452b30dae73b82533a410074d4ec039b1f1b6017b134084109670e5f
+d4f072d711bed0dfec742e36b81abc4d931d1bb11829457255a895e8b4d94098
+17d6d84c006f7c1bd1b7d951923f6cce409d3d4b0f831a799bbeebad10f0780d
+5c1022d7857fbc9662180d2cd2fe1f250ab917ef6e596e7f7ec37c72cd43b455
+3692954a4c5db6dbd558d2d748487771a8ce8a327c5ab15c7a062859f017228c
+4ae6a95e7cc27ac1ad2f2702ba6d3bef731d35c9eadf0cd2e690a10821a7f35f
+63325278f2c59d573b8089f9d0418984a2ab9fa276c8c24b6d094c34b7b60ed5
+0b0afe0a5b97c0b28a8499f5aa2998ae18ecb9ad08981362c29cf6ef8558a9dc
+38b267359446ab838b3be58edbf360363ac754d2067d4ef97474692e0d0ceaeb
+e1c78de51a88af9c73d9fba56cd356891a337e7814c642e6e86e72c9a6336856
+41ebe2164fe22dc6fd45873496d1037fdcbf273fe9eabc5d3c0d84d2fb4e8ce4
+c0fa2e5b6dcfb5ac648741ebc8873e3e1443f0db29a2aa53bada9e5c098408b9
+3ebbb1874754b8a39daa10a49a32b510bc52bbfb5f32c53d1260b6c465e4eb39
+2085a5902ff5c97a46ef4925b10a9bdd381a91cdd9d503c9649bdceae69cee86
+dad2a6c4012492aae0174ad0b4322586bcfafe2665b0e8c929afd16b2a4b57dd
+8af4e79e1a5f7ae437fcd9d863a9be279adeb9cddd487485e9dba4034ace689f
+0b864b76f02550c6b40d21354bbbfa1f5e18ba1837f219542960526bde758ed3
+
+Total reclaimed space: 1.567MB
+
+/home/docker> docker container ls -a| grep -v k8s
+CONTAINER ID        IMAGE                                                            COMMAND                  CREATED             STATUS              PORTS                                                                NAMES
+3a61799f539c        app                                                              "ping google.com"        5 minutes ago       Up 5 minutes                                                                             silly_thompson
+c24d828f327b        nginx                                                            "nginx -g 'daemon ..."   9 minutes ago       Up 9 minutes        80/tcp                                                               vibrant_haibt
+
+/home/docker> docker container exec -it silly_thompson sh
+/ # ps
+PID   USER     TIME  COMMAND
+    1 root      0:00 ping google.com
+    5 root      0:00 sh
+    9 root      0:00 ps
+/ # httpd
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 172.17.0.15. Set the 'ServerName' directive globally to suppress this message
+/ # ps
+PID   USER     TIME  COMMAND
+    1 root      0:00 ping google.com
+    5 root      0:00 sh
+   11 root      0:00 httpd
+   12 apache    0:00 httpd
+   13 apache    0:00 httpd
+   14 apache    0:00 httpd
+   15 apache    0:00 httpd
+   16 apache    0:00 httpd
+   17 root      0:00 ps
+/ # kill -9 11 12 13 14 15 16
+/ # ps
+PID   USER     TIME  COMMAND
+    1 root      0:00 ping google.com
+    5 root      0:00 sh
+   18 root      0:00 ps
+/ # httpd -D FOREGROUND
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 172.17.0.15. Set the 'ServerName' directive globally to suppress this message
+
+
+^C/ # exit
+
+/home/docker> docker container ls -a| grep -v k8s
+CONTAINER ID        IMAGE                                                            COMMAND                  CREATED             STATUS              PORTS                                                                NAMES
+3a61799f539c        app                                                              "ping google.com"        13 minutes ago      Up 13 minutes                                                                            silly_thompson
+c24d828f327b        nginx                                                            "nginx -g 'daemon ..."   16 minutes ago      Up 16 minutes       80/tcp                                                               vibrant_haibt
+
+/home/docker> docker container rm -f 3a61799f539c c24d828f327b
+3a61799f539c
+c24d828f327b
+
+/home/docker> docker container run -d -p 9999:80 app httpd -D FOREGROUND
+239d9dad570d92974421004c8dd76c2d8b0b7049f9d3f1fe7a15bbc85c59fe78
+
+/home/docker> docker container ls -a| grep -v k8s
+CONTAINER ID        IMAGE                                                            COMMAND                  CREATED             STATUS              PORTS                                                                NAMES
+239d9dad570d        app                                                              "httpd -D FOREGROUND"    4 seconds ago       Up 3 seconds        0.0.0.0:9999->80/tcp                                                 elated_poincare
+
+/home/docker>
