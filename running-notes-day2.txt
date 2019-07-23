@@ -1791,3 +1791,354 @@ drwxrwxrwt 12 root root 380 Jul 23 20:05 ..
 drwxr-xr-x  2 root root  80 Jul 23 20:05 .
 -rw-r--r--  1 root root 406 Jul 23 20:05 error.log
 
+
+
+
+----------------------------------------------------------------------------------------------
+
+/home/docker> docker container run -d --name db app
+4bd47332846c814d5226a35fdd23affa4bc1e2d63edaead5d2d3ccc3e3fb22a7
+
+/home/docker> docker container run -d --name w1 app
+docker: Error response from daemon: Conflict. The container name "/w1" is already in use by container "acecbc48ae2410f1ce02c5a393ffdf957866029a0a7ae36aea035bfc0a6e334d". You have to remove (or rename) that container to be able to reuse that name.
+See 'docker run --help'.
+
+/home/docker> docker container run -d --name w2 app
+100d410b1a82b1d6cd2f1b557ddb372bb3a2a9fb529f5791c0638a94f68cb310
+
+/home/docker>
+
+/home/docker> docker container ls -a| grep -v k8s
+CONTAINER ID        IMAGE                                                            COMMAND                  CREATED             STATUS                   PORTS                                                                NAMES
+100d410b1a82        app                                                              "httpd -D FOREGROUND"    15 seconds ago      Up 13 seconds                                                                                 w2
+4bd47332846c        app                                                              "httpd -D FOREGROUND"    22 seconds ago      Up 21 seconds                                                                                 db
+acecbc48ae24        app                                                              "httpd -D FOREGROUND"    43 seconds ago      Up 41 seconds                                                                                 w1
+
+/home/docker> docker container inspect w1 | grep -i ipaddress
+            "SecondaryIPAddresses": null,
+            "IPAddress": "172.17.0.14",
+                    "IPAddress": "172.17.0.14",
+
+/home/docker> docker container inspect w2 | grep -i ipaddress
+            "SecondaryIPAddresses": null,
+            "IPAddress": "172.17.0.16",
+                    "IPAddress": "172.17.0.16",
+
+/home/docker> docker container inspect db | grep -i ipaddress
+            "SecondaryIPAddresses": null,
+            "IPAddress": "172.17.0.15",
+                    "IPAddress": "172.17.0.15",
+
+/home/docker> docker network ls
+NETWORK ID          NAME                DRIVER              SCOPE
+21c8bd94b292        bridge              bridge              local
+f09381e2f190        host                host                local
+9cce334a36a7        none                null                local
+
+/home/docker> docker network inspect bridge
+[
+    {
+        "Name": "bridge",
+        "Id": "21c8bd94b29253ecb335b3e114dac281bcd724760d6c307e746094c0ac2e6388",
+        "Created": "2019-07-23T15:05:42.912235166Z",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": null,
+            "Config": [
+                {
+                    "Subnet": "172.17.0.0/16",
+                    "Gateway": "172.17.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {
+            "100d410b1a82b1d6cd2f1b557ddb372bb3a2a9fb529f5791c0638a94f68cb310": {
+                "Name": "w2",
+                "EndpointID": "f9cd1f08f3b118f5be6ce83024221a6ffaf3ef4c5c2c75bd9e9d166c9aff7105",
+                "MacAddress": "02:42:ac:11:00:10",
+                "IPv4Address": "172.17.0.16/16",
+                "IPv6Address": ""
+            },
+            "1f0d8fe18ff4e470252b87bd71219183d7fc7c1c4045e0cc77f4caf33a367daa": {
+                "Name": "k8s_POD_kube-dns-54cccfbdf8-fm9cn_kube-system_cfc65d88-77aa-11e9-bc85-080027326ca6_36",
+                "EndpointID": "c6aa819de417f7774cda843ccadbe8355b3fe5880b2438f4290d5554c4ed83ee",
+                "MacAddress": "02:42:ac:11:00:0b",
+                "IPv4Address": "172.17.0.11/16",
+                "IPv6Address": ""
+            },
+            "3dd89384ec80884eae82e660bae6d7a4027969bfce6579da1890529d0c82c611": {
+                "Name": "k8s_POD_influxdb-grafana-tx55c_kube-system_ab1bc183-2f94-11e9-8d17-080027326ca6_89",
+                "EndpointID": "6b2d9b1a9ee99dbb079455f18691c0aeaf8a35f995e090ebd2d9d056984b9708",
+                "MacAddress": "02:42:ac:11:00:05",
+                "IPv4Address": "172.17.0.5/16",
+                "IPv6Address": ""
+            },
+            "42a8dcee8c7266f624f790f0d6c980e9f22102d18db9de17a26d3539dcf426be": {
+                "Name": "k8s_POD_metrics-server-bb9ffc6b8-c4bsh_kube-system_ac742fe8-2f94-11e9-8d17-080027326ca6_87",
+                "EndpointID": "75a229f1b4c4c0d4d0ec5ecb4ca35c39d45c54a13b70e16957816973ab31d758",
+                "MacAddress": "02:42:ac:11:00:08",
+                "IPv4Address": "172.17.0.8/16",
+                "IPv6Address": ""
+            },
+            "44756e67caf16c32553793a5e70ff24a5c477e7504cc7323314a052af413450b": {
+                "Name": "k8s_POD_monitoring-grafana-65757b9656-h4fbs_kube-system_abcaee65-2f94-11e9-8d17-080027326ca6_88",
+                "EndpointID": "6c1da0a53648df3f3ba28bc67eb934ad6ac7ef97f397b563ac5f95b62b6f2810",
+                "MacAddress": "02:42:ac:11:00:06",
+                "IPv4Address": "172.17.0.6/16",
+                "IPv6Address": ""
+            },
+            "4bd47332846c814d5226a35fdd23affa4bc1e2d63edaead5d2d3ccc3e3fb22a7": {
+                "Name": "db",
+                "EndpointID": "ca03879f8fa2bc34917f69c87e393c8c9b8e66d9ae4626fd08a90b8f72af8b40",
+                "MacAddress": "02:42:ac:11:00:0f",
+                "IPv4Address": "172.17.0.15/16",
+                "IPv6Address": ""
+            },
+            "655d805031ab21768fda34a1b8d6410ce18dd70b506c9ad43c8da249209afc7a": {
+                "Name": "k8s_POD_heapster-546c9964c6-2w8ld_kube-system_ac314ae9-2f94-11e9-8d17-080027326ca6_88",
+                "EndpointID": "840479e23698adc6878fb5fb3b6eb294cf57ff80668df1cad236db6120172a4f",
+                "MacAddress": "02:42:ac:11:00:04",
+                "IPv4Address": "172.17.0.4/16",
+                "IPv6Address": ""
+            },
+            "6aa4ce712ad1d2e7af991bf8d28cab122e05c6d77d52c684446f86b46df019ca": {
+                "Name": "k8s_POD_default-http-backend-cvzhd_kube-system_ab6b020b-2f94-11e9-8d17-080027326ca6_90",
+                "EndpointID": "100c653a3406adba22268719f5f6811d3ef08f0b14e0893b4ff7872cfb33e115",
+                "MacAddress": "02:42:ac:11:00:09",
+                "IPv4Address": "172.17.0.9/16",
+                "IPv6Address": ""
+            },
+            "8f9d840ef427cd7ebb31416552098af4b17a62d1fa05e2224ee5adb172b04dfc": {
+                "Name": "k8s_POD_monitoring-influxdb-66946c9f58-h5lhw_kube-system_abf955f0-2f94-11e9-8d17-080027326ca6_88",
+                "EndpointID": "7a94782ca164f4f991390754966e03c27ccfc192060dfd5e10741c8b4b89082d",
+                "MacAddress": "02:42:ac:11:00:0d",
+                "IPv4Address": "172.17.0.13/16",
+                "IPv6Address": ""
+            },
+            "a8437cf753790c623917aadf400eb7e3c0fc9f7869eea3d947cb783f2ad7eca2": {
+                "Name": "k8s_POD_kubernetes-dashboard-77d8b98585-mftdb_kube-system_1806d17c-804a-11e9-a140-080027326ca6_29",
+                "EndpointID": "0439e6e38ee7837e2d1ccd0567fa436605c256c6314e1e5528614749a1289a64",
+                "MacAddress": "02:42:ac:11:00:07",
+                "IPv4Address": "172.17.0.7/16",
+                "IPv6Address": ""
+            },
+            "acecbc48ae2410f1ce02c5a393ffdf957866029a0a7ae36aea035bfc0a6e334d": {
+                "Name": "w1",
+                "EndpointID": "74a8c22a9f968eebcf0a2d9557c4d57e0b8c49fc0d145b8aa905b04749f16d33",
+                "MacAddress": "02:42:ac:11:00:0e",
+                "IPv4Address": "172.17.0.14/16",
+                "IPv6Address": ""
+            },
+            "caa0182a0eee5579a99c85c99043dbf8eedb96dc8a7242c42f8c229da04f5648": {
+                "Name": "k8s_POD_tiller-deploy-5b7c59888b-6rbgl_kube-system_42cc5a34-3c10-11e9-a9d7-080027326ca6_81",
+                "EndpointID": "1d595ebedb2069683b81ac4fbd5f98cd1b833aeb0bbefd5721bb1e8029a97969",
+                "MacAddress": "02:42:ac:11:00:0c",
+                "IPv4Address": "172.17.0.12/16",
+                "IPv6Address": ""
+            },
+            "d6d2daaa2308759defac075b8924df42976f799bccedb7f7df68a5908c632b0a": {
+                "Name": "k8s_POD_heapster-xnbjb_kube-system_aafb3c7c-2f94-11e9-8d17-080027326ca6_88",
+                "EndpointID": "4b83cb89a845089c375af861d2c6a7d0aa2893de8ae8c46b60120e3fded20557",
+                "MacAddress": "02:42:ac:11:00:02",
+                "IPv4Address": "172.17.0.2/16",
+                "IPv6Address": ""
+            },
+            "d6e3345abf7c77454ce97614144ef5b9978407d1a9eba7e963466df11968c4a9": {
+                "Name": "k8s_POD_prometheus-deployment-79c7cf44fc-xdj6l_monitoring_ed3806b7-803f-11e9-a140-080027326ca6_29",
+                "EndpointID": "eea34b106c821649e3065bf407cf919bf8b9849a4d42732eaf00154fc00c8481",
+                "MacAddress": "02:42:ac:11:00:03",
+                "IPv4Address": "172.17.0.3/16",
+                "IPv6Address": ""
+            },
+            "f6a46ac22a299dc254647a69eb435bf5c16ddb663b5179a998d1fdccc95ac020": {
+                "Name": "k8s_POD_nginx-ingress-controller-zjd74_kube-system_ab42b3da-2f94-11e9-8d17-080027326ca6_88",
+                "EndpointID": "814bcfc518c2ba5e46d9b34f91d950700d49f5e8c7ef4dfe82731e4b8a460494",
+                "MacAddress": "02:42:ac:11:00:0a",
+                "IPv4Address": "172.17.0.10/16",
+                "IPv6Address": ""
+            }
+        },
+        "Options": {
+            "com.docker.network.bridge.default_bridge": "true",
+            "com.docker.network.bridge.enable_icc": "true",
+            "com.docker.network.bridge.enable_ip_masquerade": "true",
+            "com.docker.network.bridge.host_binding_ipv4": "0.0.0.0",
+            "com.docker.network.bridge.name": "docker0",
+            "com.docker.network.driver.mtu": "1500"
+        },
+        "Labels": {}
+    }
+]
+
+/home/docker> docker network create w1-db-net
+88541647630a4e5b1dec1b4b32c76e7c56f990b8b8b1fda92f1acb95b76ff31c
+
+/home/docker> docker network ls
+NETWORK ID          NAME                DRIVER              SCOPE
+21c8bd94b292        bridge              bridge              local
+f09381e2f190        host                host                local
+9cce334a36a7        none                null                local
+88541647630a        w1-db-net           bridge              local
+
+/home/docker> docker network inspect w1-db-net
+[
+    {
+        "Name": "w1-db-net",
+        "Id": "88541647630a4e5b1dec1b4b32c76e7c56f990b8b8b1fda92f1acb95b76ff31c",
+        "Created": "2019-07-23T21:17:44.402564734Z",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": {},
+            "Config": [
+                {
+                    "Subnet": "172.18.0.0/16",
+                    "Gateway": "172.18.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {},
+        "Options": {},
+        "Labels": {}
+    }
+]
+
+/home/docker> docker container inspect w1 | grep -i ipaddress
+            "SecondaryIPAddresses": null,
+            "IPAddress": "172.17.0.14",
+                    "IPAddress": "172.17.0.14",
+
+/home/docker> docker network disconnect bridge w1
+
+/home/docker> docker network connect w1-db-net w1
+
+/home/docker> docker container inspect w1 | grep -i ipaddress
+            "SecondaryIPAddresses": null,
+            "IPAddress": "",
+                    "IPAddress": "172.18.0.2",
+
+/home/docker> docker container exec w1 ping 172.17.0.15
+PING 172.17.0.15 (172.17.0.15): 56 data bytes
+^C
+
+/home/docker> docker network disconnect bridge db
+
+/home/docker> docker network connect w1-db-net db
+
+/home/docker> docker container inspect db | grep -i ipaddress
+            "SecondaryIPAddresses": null,
+            "IPAddress": "",
+                    "IPAddress": "172.18.0.3",
+
+/home/docker> docker container exec w1 ping 172.18.0.3
+PING 172.18.0.3 (172.18.0.3): 56 data bytes
+64 bytes from 172.18.0.3: seq=0 ttl=64 time=0.154 ms
+64 bytes from 172.18.0.3: seq=1 ttl=64 time=0.135 ms
+^C
+
+/home/docker> docker network create w2-db-net
+43befb47e396d32395026cc902c8ac52dc4c3de1b93d0737ce852bd68d88e4ef
+
+/home/docker> docker network disconnect bridge w2
+
+/home/docker> docker network connect w2-db-net w2
+
+/home/docker> docker container inspect w2 | grep -i ipaddress
+            "SecondaryIPAddresses": null,
+            "IPAddress": "",
+                    "IPAddress": "172.19.0.2",
+
+/home/docker> docker container inspect db | grep -i ipaddress
+            "SecondaryIPAddresses": null,
+            "IPAddress": "",
+                    "IPAddress": "172.18.0.3",
+
+/home/docker> docker network connect w2-db-net db
+
+/home/docker> docker container inspect db | grep -i ipaddress
+            "SecondaryIPAddresses": null,
+            "IPAddress": "",
+                    "IPAddress": "172.18.0.3",
+                    "IPAddress": "172.19.0.3",
+
+/home/docker>
+
+/home/docker> docker container inspect w1 | grep -i ipaddress
+            "SecondaryIPAddresses": null,
+            "IPAddress": "",
+                    "IPAddress": "172.18.0.2",
+
+/home/docker> docker container inspect db | grep -i ipaddress
+            "SecondaryIPAddresses": null,
+            "IPAddress": "",
+                    "IPAddress": "172.18.0.3",
+                    "IPAddress": "172.19.0.3",
+
+/home/docker> docker container inspect w2 | grep -i ipaddress
+            "SecondaryIPAddresses": null,
+            "IPAddress": "",
+                    "IPAddress": "172.19.0.2",
+
+/home/docker> docker container exec w1 ping -c2 172.18.0.3
+PING 172.18.0.3 (172.18.0.3): 56 data bytes
+64 bytes from 172.18.0.3: seq=0 ttl=64 time=0.142 ms
+64 bytes from 172.18.0.3: seq=1 ttl=64 time=0.357 ms
+
+--- 172.18.0.3 ping statistics ---
+2 packets transmitted, 2 packets received, 0% packet loss
+round-trip min/avg/max = 0.142/0.249/0.357 ms
+
+/home/docker> docker container exec w2 ping -c2 172.19.0.3
+PING 172.19.0.3 (172.19.0.3): 56 data bytes
+64 bytes from 172.19.0.3: seq=0 ttl=64 time=0.152 ms
+64 bytes from 172.19.0.3: seq=1 ttl=64 time=0.088 ms
+
+--- 172.19.0.3 ping statistics ---
+2 packets transmitted, 2 packets received, 0% packet loss
+round-trip min/avg/max = 0.088/0.120/0.152 ms
+
+/home/docker> docker container exec w2 ping -c2 172.18.0.2
+PING 172.18.0.2 (172.18.0.2): 56 data bytes
+^C
+
+/home/docker> docker container exec w1 ping -c2 db
+PING db (172.18.0.3): 56 data bytes
+64 bytes from 172.18.0.3: seq=0 ttl=64 time=0.110 ms
+64 bytes from 172.18.0.3: seq=1 ttl=64 time=0.104 ms
+
+--- db ping statistics ---
+2 packets transmitted, 2 packets received, 0% packet loss
+round-trip min/avg/max = 0.104/0.107/0.110 ms
+
+/home/docker> docker container exec w2 ping -c2 db
+PING db (172.19.0.3): 56 data bytes
+64 bytes from 172.19.0.3: seq=0 ttl=64 time=0.092 ms
+64 bytes from 172.19.0.3: seq=1 ttl=64 time=0.176 ms
+
+--- db ping statistics ---
+2 packets transmitted, 2 packets received, 0% packet loss
+round-trip min/avg/max = 0.092/0.134/0.176 ms
+
+/home/docker> docker container exec w2 ping -c2 w1
+ping: bad address 'w1'
+
+/home/docker>
