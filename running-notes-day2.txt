@@ -186,3 +186,104 @@ REPOSITORY          TAG                 IMAGE ID            CREATED             
 intimage            latest              78954b2d97e8        23 minutes ago      7MB
 
 /c/Users/Dell lap/docker-workshop/jul22/app>
+
+
+
+
+------------------------------------------------------------------------------------------------------------
+
+
+
+/c/Users/Dell lap/docker-workshop/jul22/app> cat > mypage.html
+<h1> My Code </h1>
+^C
+
+/c/Users/Dell lap/docker-workshop/jul22/app>
+
+/c/Users/Dell lap/docker-workshop/jul22/app> cat mypage.html
+<h1> My Code </h1>
+
+/c/Users/Dell lap/docker-workshop/jul22/app> vi Dockerfile
+
+/c/Users/Dell lap/docker-workshop/jul22/app> cat Dockerfile
+FROM alpine
+RUN apk update
+RUN apk add apache2
+COPY mypage.html /var/www/localhost/htdocs
+
+/c/Users/Dell lap/docker-workshop/jul22/app> docker image build -f Dockerfile -t app:2 -t app:latest .
+Sending build context to Docker daemon  3.072kB
+Step 1/4 : FROM alpine
+ ---> b7b28af77ffe
+Step 2/4 : RUN apk update
+ ---> Using cache
+ ---> 78954b2d97e8
+Step 3/4 : RUN apk add apache2
+ ---> Using cache
+ ---> c1b3787a442c
+Step 4/4 : COPY mypage.html /var/www/localhost/htdocs
+ ---> ac0f61f72db3
+Successfully built ac0f61f72db3
+Successfully tagged app:2
+Successfully tagged app:latest
+
+/c/Users/Dell lap/docker-workshop/jul22/app> docker image ls app
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+app                 2                   ac0f61f72db3        15 seconds ago      10.6MB
+app                 latest              ac0f61f72db3        15 seconds ago      10.6MB
+app                 1                   c1b3787a442c        About an hour ago   10.6MB
+app                 delta               c1b3787a442c        About an hour ago   10.6MB
+
+/c/Users/Dell lap/docker-workshop/jul22/app> vi Dockerfile
+
+/c/Users/Dell lap/docker-workshop/jul22/app> cat Dockerfile
+FROM alpine
+RUN apk update
+RUN apk add apache2
+COPY mypage1.html /var/www/localhost/htdocs
+
+/c/Users/Dell lap/docker-workshop/jul22/app> ls
+Dockerfile  mypage.html
+
+/c/Users/Dell lap/docker-workshop/jul22/app> docker image build -f Dockerfile -t app:2 -t app:latest .
+Sending build context to Docker daemon  3.072kB
+Step 1/4 : FROM alpine
+ ---> b7b28af77ffe
+Step 2/4 : RUN apk update
+ ---> Using cache
+ ---> 78954b2d97e8
+Step 3/4 : RUN apk add apache2
+ ---> Using cache
+ ---> c1b3787a442c
+Step 4/4 : COPY mypage1.html /var/www/localhost/htdocs
+COPY failed: stat /var/lib/docker/tmp/docker-builder962712091/mypage1.html: no such file or directory
+
+/c/Users/Dell lap/docker-workshop/jul22/app> docker image build -f Dockerfile -t app:2 -t app:latest
+"docker image build" requires exactly 1 argument.
+See 'docker image build --help'.
+
+Usage:  docker image build [OPTIONS] PATH | URL | -
+
+Build an image from a Dockerfile
+
+/c/Users/Dell lap/docker-workshop/jul22/app> vi Dockerfile
+
+/c/Users/Dell lap/docker-workshop/jul22/app> cd ..
+
+/c/Users/Dell lap/docker-workshop/jul22> docker image build -t app:2 -t app:latest app          Sending build context to Docker daemon  3.072kB
+Step 1/4 : FROM alpine
+ ---> b7b28af77ffe
+Step 2/4 : RUN apk update
+ ---> Using cache
+ ---> 78954b2d97e8
+Step 3/4 : RUN apk add apache2
+ ---> Using cache
+ ---> c1b3787a442c
+Step 4/4 : COPY mypage.html /var/www/localhost/htdocs
+ ---> Using cache
+ ---> ac0f61f72db3
+Successfully built ac0f61f72db3
+Successfully tagged app:2
+Successfully tagged app:latest
+
+/c/Users/Dell lap/docker-workshop/jul22>
