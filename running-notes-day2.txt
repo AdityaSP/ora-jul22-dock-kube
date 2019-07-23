@@ -483,3 +483,54 @@ CONTAINER ID        IMAGE                                                       
 239d9dad570d        app                                                              "httpd -D FOREGROUND"    4 seconds ago       Up 3 seconds        0.0.0.0:9999->80/tcp                                                 elated_poincare
 
 /home/docker>
+
+
+-------------------------------------------------------------------------------------
+
+
+/home/docker> docker container run -d -p 9999:80 app httpd -D FOREGROUND
+239d9dad570d92974421004c8dd76c2d8b0b7049f9d3f1fe7a15bbc85c59fe78
+
+/home/docker> docker container ls -a| grep -v k8s
+CONTAINER ID        IMAGE                                                            COMMAND                  CREATED             STATUS              PORTS                                                                NAMES
+239d9dad570d        app                                                              "httpd -D FOREGROUND"    4 seconds ago       Up 3 seconds        0.0.0.0:9999->80/tcp                                                 elated_poincare
+
+/home/docker> docker container exec -it 239d9dad570d sh
+/ # ps
+PID   USER     TIME  COMMAND
+    1 root      0:00 httpd -D FOREGROUND
+    7 apache    0:00 httpd -D FOREGROUND
+    8 apache    0:00 httpd -D FOREGROUND
+    9 apache    0:00 httpd -D FOREGROUND
+   10 apache    0:00 httpd -D FOREGROUND
+   11 apache    0:00 httpd -D FOREGROUND
+   12 apache    0:00 httpd -D FOREGROUND
+   13 root      0:00 sh
+   18 root      0:00 ps
+/ # ps -ef
+PID   USER     TIME  COMMAND
+    1 root      0:00 httpd -D FOREGROUND
+    7 apache    0:00 httpd -D FOREGROUND
+    8 apache    0:00 httpd -D FOREGROUND
+    9 apache    0:00 httpd -D FOREGROUND
+   10 apache    0:00 httpd -D FOREGROUND
+   11 apache    0:00 httpd -D FOREGROUND
+   12 apache    0:00 httpd -D FOREGROUND
+   13 root      0:00 sh
+   19 root      0:00 ps -ef
+/ #
+/home/docker> docker container ls -a| grep -v k8s
+CONTAINER ID        IMAGE                                                            COMMAND                  CREATED             STATUS                       PORTS                                                                NAMES
+239d9dad570d        app                                                              "httpd -D FOREGROUND"    28 minutes ago      Exited (137) 7 seconds ago                                                                        elated_poincare
+
+/home/docker>
+
+
+################################ PROCESS TREE NOTE #########################################
+
+2375     1  /usr/bin/dockerd
+    2410  2375 docker-containerd
+        30988  2410 docker-containerd-shim
+            31013 30988 httpd -D FOREGROUND
+
+############################################################################################
