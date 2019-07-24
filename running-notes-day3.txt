@@ -882,3 +882,316 @@ REVISION  CHANGE-CAUSE
 
 Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s (master)
 λ
+
+
+
+
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s (master)
+λ kubectl apply -f blog/blog-db.yml
+deployment.extensions/blog-db-dep created
+
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s (master)
+λ kubectl get pods
+NAME                              READY   STATUS    RESTARTS   AGE
+blog-db-dep-7c8f99fccd-mcw8f      1/1     Running   0          6s
+helloworld-dep-6b5cd64d8d-vnbnh   1/1     Running   0          18m
+helloworld-dep-6b5cd64d8d-w6hj6   1/1     Running   0          18m
+
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s (master)
+λ kubectl logs -f blog-db-dep-7c8f99fccd-mcw8f --container db
+Initializing database
+2019-07-24T21:44:17.787009Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2019-07-24T21:44:25.832713Z 0 [Warning] InnoDB: New log files created, LSN=45790
+2019-07-24T21:44:26.245220Z 0 [Warning] InnoDB: Creating foreign key constraint system tables.
+2019-07-24T21:44:27.059150Z 0 [Warning] No existing UUID has been found, so we assume that this is the first time that this server has been started. Generating a new UUID: 35937423-ae5c-11e9-ba0c-0242ac110010.
+2019-07-24T21:44:27.061349Z 0 [Warning] Gtid table is not ready to be used. Table 'mysql.gtid_executed' cannot be opened.
+2019-07-24T21:44:27.062101Z 1 [Warning] root@localhost is created with an empty password ! Please consider switching off the --initialize-insecure option.
+2019-07-24T21:44:28.516130Z 1 [Warning] 'user' entry 'root@localhost' ignored in --skip-name-resolve mode.
+2019-07-24T21:44:28.516587Z 1 [Warning] 'user' entry 'mysql.session@localhost' ignored in --skip-name-resolve mode.
+2019-07-24T21:44:28.516653Z 1 [Warning] 'user' entry 'mysql.sys@localhost' ignored in --skip-name-resolve mode.
+2019-07-24T21:44:28.516722Z 1 [Warning] 'db' entry 'performance_schema mysql.session@localhost' ignored in --skip-name-resolve mode.
+2019-07-24T21:44:28.516817Z 1 [Warning] 'db' entry 'sys mysql.sys@localhost' ignored in --skip-name-resolve mode.
+2019-07-24T21:44:28.517220Z 1 [Warning] 'proxies_priv' entry '@ root@localhost' ignored in --skip-name-resolve mode.
+2019-07-24T21:44:28.517332Z 1 [Warning] 'tables_priv' entry 'user mysql.session@localhost' ignored in --skip-name-resolve mode.
+2019-07-24T21:44:28.517368Z 1 [Warning] 'tables_priv' entry 'sys_config mysql.sys@localhost' ignored in --skip-name-resolve mode.
+Database initialized
+Initializing certificates
+Generating a RSA private key
+................................................................+++++
+..+++++
+unable to write 'random state'
+writing new private key to 'ca-key.pem'
+-----
+Generating a RSA private key
+...............................+++++
+..............+++++
+unable to write 'random state'
+writing new private key to 'server-key.pem'
+-----
+Generating a RSA private key
+..........................................................................................................+++++
+...........+++++
+unable to write 'random state'
+writing new private key to 'client-key.pem'
+-----
+Certificates initialized
+MySQL init process in progress...
+MySQL init process in progress...
+MySQL init process in progress...
+MySQL init process in progress...
+MySQL init process in progress...
+MySQL init process in progress...
+MySQL init process in progress...
+2019-07-24T21:45:07.780791Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2019-07-24T21:45:08.534021Z 0 [Note] mysqld (mysqld 5.7.25) starting as process 88 ...
+2019-07-24T21:45:09.176200Z 0 [Note] InnoDB: PUNCH HOLE support available
+2019-07-24T21:45:09.186238Z 0 [Note] InnoDB: Mutexes and rw_locks use GCC atomic builtins
+2019-07-24T21:45:09.186259Z 0 [Note] InnoDB: Uses event mutexes
+2019-07-24T21:45:09.186267Z 0 [Note] InnoDB: GCC builtin __atomic_thread_fence() is used for memory barrier
+2019-07-24T21:45:09.186335Z 0 [Note] InnoDB: Compressed tables use zlib 1.2.11
+2019-07-24T21:45:09.186349Z 0 [Note] InnoDB: Using Linux native AIO
+2019-07-24T21:45:09.213915Z 0 [Note] InnoDB: Number of pools: 1
+2019-07-24T21:45:09.327257Z 0 [Note] InnoDB: Using CPU crc32 instructions
+2019-07-24T21:45:09.357268Z 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+MySQL init process in progress...
+2019-07-24T21:45:15.702148Z 0 [Note] InnoDB: Completed initialization of buffer pool
+2019-07-24T21:45:15.801884Z 0 [Note] InnoDB: If the mysqld execution user is authorized, page cleaner thread priority can be changed. See the man page of setpriority().
+MySQL init process in progress...
+2019-07-24T21:45:16.780717Z 0 [Note] InnoDB: Highest supported file format is Barracuda.
+2019-07-24T21:45:17.149447Z 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2019-07-24T21:45:17.150133Z 0 [Note] InnoDB: Setting file './ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+MySQL init process in progress...
+MySQL init process in progress...
+MySQL init process in progress...
+2019-07-24T21:45:20.798556Z 0 [Note] InnoDB: File './ibtmp1' size is now 12 MB.
+2019-07-24T21:45:20.846292Z 0 [Note] InnoDB: 96 redo rollback segment(s) found. 96 redo rollback segment(s) are active.
+2019-07-24T21:45:20.846387Z 0 [Note] InnoDB: 32 non-redo rollback segment(s) are active.
+2019-07-24T21:45:20.857003Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-24T21:45:20.907488Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-24T21:45:20.958898Z 0 [Note] InnoDB: page_cleaner: 1000ms intended loop took 5157ms. The settings might not be optimal. (flushed=0 and evicted=0, during the time.)
+2019-07-24T21:45:20.959483Z 0 [Note] InnoDB: 5.7.25 started; log sequence number 2524141
+2019-07-24T21:45:20.991918Z 0 [Note] Plugin 'FEDERATED' is disabled.
+MySQL init process in progress...
+2019-07-24T21:45:21.549707Z 0 [Note] InnoDB: Loading buffer pool(s) from /var/lib/mysql/ib_buffer_pool
+2019-07-24T21:45:21.596016Z 0 [Note] Found ca.pem, server-cert.pem and server-key.pem in data directory. Trying to enable SSL support using them.
+2019-07-24T21:45:21.647872Z 0 [Warning] CA certificate ca.pem is self signed.
+2019-07-24T21:45:22.152644Z 0 [Note] InnoDB: Buffer pool(s) load completed at 190724 21:45:22
+2019-07-24T21:45:22.230678Z 0 [Warning] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+2019-07-24T21:45:22.244980Z 0 [Warning] 'user' entry 'root@localhost' ignored in --skip-name-resolve mode.
+2019-07-24T21:45:22.245048Z 0 [Warning] 'user' entry 'mysql.session@localhost' ignored in --skip-name-resolve mode.
+2019-07-24T21:45:22.245068Z 0 [Warning] 'user' entry 'mysql.sys@localhost' ignored in --skip-name-resolve mode.
+2019-07-24T21:45:22.245574Z 0 [Warning] 'db' entry 'performance_schema mysql.session@localhost' ignored in --skip-name-resolve mode.
+2019-07-24T21:45:22.245593Z 0 [Warning] 'db' entry 'sys mysql.sys@localhost' ignored in --skip-name-resolve mode.
+2019-07-24T21:45:22.245869Z 0 [Warning] 'proxies_priv' entry '@ root@localhost' ignored in --skip-name-resolve mode.
+2019-07-24T21:45:22.263028Z 0 [Warning] 'tables_priv' entry 'user mysql.session@localhost' ignored in --skip-name-resolve mode.
+2019-07-24T21:45:22.263064Z 0 [Warning] 'tables_priv' entry 'sys_config mysql.sys@localhost' ignored in --skip-name-resolve mode.
+2019-07-24T21:45:22.340026Z 0 [Note] Event Scheduler: Loaded 0 events
+2019-07-24T21:45:22.340448Z 0 [Note] mysqld: ready for connections.
+Version: '5.7.25'  socket: '/var/run/mysqld/mysqld.sock'  port: 0  MySQL Community Server (GPL) Warning: Unable to load '/usr/share/zoneinfo/iso3166.tab' as time zone. Skipping it.
+Warning: Unable to load '/usr/share/zoneinfo/leap-seconds.list' as time zone. Skipping it.
+2019-07-24T21:45:43.583773Z 0 [Note] InnoDB: page_cleaner: 1000ms intended loop took 5569ms. The settings might not be optimal. (flushed=128 and evicted=0, during the time.)
+2019-07-24T21:45:55.317197Z 0 [Note] InnoDB: page_cleaner: 1000ms intended loop took 4455ms. The settings might not be optimal. (flushed=104 and evicted=0, during the time.)
+2019-07-24T21:46:27.365571Z 0 [Note] InnoDB: page_cleaner: 1000ms intended loop took 12733ms. The settings might not be optimal. (flushed=199 and evicted=0, during the time.)
+Warning: Unable to load '/usr/share/zoneinfo/zone.tab' as time zone. Skipping it.
+Warning: Unable to load '/usr/share/zoneinfo/zone1970.tab' as time zone. Skipping it.
+2019-07-24T21:46:38.374095Z 4 [Warning] 'user' entry 'root@localhost' ignored in --skip-name-resolve mode.
+2019-07-24T21:46:38.375965Z 4 [Warning] 'user' entry 'mysql.session@localhost' ignored in --skip-name-resolve mode.
+2019-07-24T21:46:38.376023Z 4 [Warning] 'user' entry 'mysql.sys@localhost' ignored in --skip-name-resolve mode.
+2019-07-24T21:46:38.376077Z 4 [Warning] 'db' entry 'performance_schema mysql.session@localhost' ignored in --skip-name-resolve mode.
+2019-07-24T21:46:38.376088Z 4 [Warning] 'db' entry 'sys mysql.sys@localhost' ignored in --skip-name-resolve mode.
+2019-07-24T21:46:38.376106Z 4 [Warning] 'proxies_priv' entry '@ root@localhost' ignored in --skip-name-resolve mode.
+2019-07-24T21:46:38.376378Z 4 [Warning] 'tables_priv' entry 'user mysql.session@localhost' ignored in --skip-name-resolve mode.
+2019-07-24T21:46:38.376396Z 4 [Warning] 'tables_priv' entry 'sys_config mysql.sys@localhost' ignored in --skip-name-resolve mode.
+
+2019-07-24T21:46:41.777073Z 0 [Note] Giving 0 client threads a chance to die gracefully
+2019-07-24T21:46:41.777144Z 0 [Note] Shutting down slave threads
+2019-07-24T21:46:42.393460Z 0 [Note] Forcefully disconnecting 0 remaining clients
+2019-07-24T21:46:42.393591Z 0 [Note] Event Scheduler: Purging the queue. 0 events
+2019-07-24T21:46:42.393884Z 0 [Note] Binlog end
+2019-07-24T21:46:42.518137Z 0 [Note] Shutting down plugin 'ngram'
+2019-07-24T21:46:42.518588Z 0 [Note] Shutting down plugin 'partition'
+2019-07-24T21:46:42.518680Z 0 [Note] Shutting down plugin 'BLACKHOLE'
+2019-07-24T21:46:42.518711Z 0 [Note] Shutting down plugin 'ARCHIVE'
+2019-07-24T21:46:42.518727Z 0 [Note] Shutting down plugin 'PERFORMANCE_SCHEMA'
+2019-07-24T21:46:42.519531Z 0 [Note] Shutting down plugin 'MRG_MYISAM'
+2019-07-24T21:46:42.519562Z 0 [Note] Shutting down plugin 'MyISAM'
+2019-07-24T21:46:42.519594Z 0 [Note] Shutting down plugin 'INNODB_SYS_VIRTUAL'
+2019-07-24T21:46:42.520509Z 0 [Note] Shutting down plugin 'INNODB_SYS_DATAFILES'
+2019-07-24T21:46:42.520542Z 0 [Note] Shutting down plugin 'INNODB_SYS_TABLESPACES'
+2019-07-24T21:46:42.520624Z 0 [Note] Shutting down plugin 'INNODB_SYS_FOREIGN_COLS'
+2019-07-24T21:46:42.520645Z 0 [Note] Shutting down plugin 'INNODB_SYS_FOREIGN'
+2019-07-24T21:46:42.520660Z 0 [Note] Shutting down plugin 'INNODB_SYS_FIELDS'
+2019-07-24T21:46:42.520676Z 0 [Note] Shutting down plugin 'INNODB_SYS_COLUMNS'
+2019-07-24T21:46:42.520691Z 0 [Note] Shutting down plugin 'INNODB_SYS_INDEXES'
+2019-07-24T21:46:42.520706Z 0 [Note] Shutting down plugin 'INNODB_SYS_TABLESTATS'
+2019-07-24T21:46:42.520722Z 0 [Note] Shutting down plugin 'INNODB_SYS_TABLES'
+2019-07-24T21:46:42.520737Z 0 [Note] Shutting down plugin 'INNODB_FT_INDEX_TABLE'
+2019-07-24T21:46:42.520752Z 0 [Note] Shutting down plugin 'INNODB_FT_INDEX_CACHE'
+2019-07-24T21:46:42.520768Z 0 [Note] Shutting down plugin 'INNODB_FT_CONFIG'
+2019-07-24T21:46:42.520783Z 0 [Note] Shutting down plugin 'INNODB_FT_BEING_DELETED'
+2019-07-24T21:46:42.520798Z 0 [Note] Shutting down plugin 'INNODB_FT_DELETED'
+2019-07-24T21:46:42.520814Z 0 [Note] Shutting down plugin 'INNODB_FT_DEFAULT_STOPWORD'
+2019-07-24T21:46:42.520829Z 0 [Note] Shutting down plugin 'INNODB_METRICS'
+2019-07-24T21:46:42.520844Z 0 [Note] Shutting down plugin 'INNODB_TEMP_TABLE_INFO'
+2019-07-24T21:46:42.520860Z 0 [Note] Shutting down plugin 'INNODB_BUFFER_POOL_STATS'
+2019-07-24T21:46:42.520876Z 0 [Note] Shutting down plugin 'INNODB_BUFFER_PAGE_LRU'
+2019-07-24T21:46:42.520891Z 0 [Note] Shutting down plugin 'INNODB_BUFFER_PAGE'
+2019-07-24T21:46:42.520907Z 0 [Note] Shutting down plugin 'INNODB_CMP_PER_INDEX_RESET'
+2019-07-24T21:46:42.520922Z 0 [Note] Shutting down plugin 'INNODB_CMP_PER_INDEX'
+2019-07-24T21:46:42.520937Z 0 [Note] Shutting down plugin 'INNODB_CMPMEM_RESET'
+2019-07-24T21:46:42.520953Z 0 [Note] Shutting down plugin 'INNODB_CMPMEM'
+2019-07-24T21:46:42.520968Z 0 [Note] Shutting down plugin 'INNODB_CMP_RESET'
+2019-07-24T21:46:42.520983Z 0 [Note] Shutting down plugin 'INNODB_CMP'
+2019-07-24T21:46:42.520999Z 0 [Note] Shutting down plugin 'INNODB_LOCK_WAITS'
+2019-07-24T21:46:42.521014Z 0 [Note] Shutting down plugin 'INNODB_LOCKS'
+2019-07-24T21:46:42.521029Z 0 [Note] Shutting down plugin 'INNODB_TRX'
+2019-07-24T21:46:42.521045Z 0 [Note] Shutting down plugin 'InnoDB'
+2019-07-24T21:46:42.552598Z 0 [Note] InnoDB: FTS optimize thread exiting.
+2019-07-24T21:46:42.583492Z 0 [Note] InnoDB: Starting shutdown...
+2019-07-24T21:46:43.537281Z 0 [Note] InnoDB: Dumping buffer pool(s) to /var/lib/mysql/ib_buffer_pool
+2019-07-24T21:46:43.668904Z 0 [Note] InnoDB: Buffer pool(s) dump completed at 190724 21:46:43
+2019-07-24T21:46:45.063598Z 0 [Note] InnoDB: Shutdown completed; log sequence number 12360372
+2019-07-24T21:46:45.070238Z 0 [Note] InnoDB: Removed temporary tablespace data file: "ibtmp1"
+2019-07-24T21:46:45.070332Z 0 [Note] Shutting down plugin 'MEMORY'
+2019-07-24T21:46:45.072978Z 0 [Note] Shutting down plugin 'CSV'
+2019-07-24T21:46:45.073031Z 0 [Note] Shutting down plugin 'sha256_password'
+2019-07-24T21:46:45.073038Z 0 [Note] Shutting down plugin 'mysql_native_password'
+2019-07-24T21:46:45.074941Z 0 [Note] Shutting down plugin 'binlog'
+2019-07-24T21:46:45.177624Z 0 [Note] mysqld: Shutdown complete
+
+
+MySQL init process done. Ready for start up.
+
+2019-07-24T21:46:46.109740Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2019-07-24T21:46:46.111903Z 0 [Note] mysqld (mysqld 5.7.25) starting as process 1 ...
+2019-07-24T21:46:46.556009Z 0 [Note] InnoDB: PUNCH HOLE support available
+2019-07-24T21:46:46.556075Z 0 [Note] InnoDB: Mutexes and rw_locks use GCC atomic builtins
+2019-07-24T21:46:46.556701Z 0 [Note] InnoDB: Uses event mutexes
+2019-07-24T21:46:46.556713Z 0 [Note] InnoDB: GCC builtin __atomic_thread_fence() is used for memory barrier
+2019-07-24T21:46:46.556721Z 0 [Note] InnoDB: Compressed tables use zlib 1.2.11
+2019-07-24T21:46:46.556878Z 0 [Note] InnoDB: Using Linux native AIO
+2019-07-24T21:46:46.571288Z 0 [Note] InnoDB: Number of pools: 1
+2019-07-24T21:46:46.573832Z 0 [Note] InnoDB: Using CPU crc32 instructions
+2019-07-24T21:46:47.869074Z 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2019-07-24T21:46:48.478425Z 0 [Note] InnoDB: Completed initialization of buffer pool
+2019-07-24T21:46:48.689828Z 0 [Note] InnoDB: If the mysqld execution user is authorized, page cleaner thread priority can be changed. See the man page of setpriority().
+2019-07-24T21:46:49.425859Z 0 [Note] InnoDB: Highest supported file format is Barracuda.
+2019-07-24T21:46:49.593205Z 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2019-07-24T21:46:49.593357Z 0 [Note] InnoDB: Setting file './ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2019-07-24T21:46:49.778094Z 0 [Note] InnoDB: File './ibtmp1' size is now 12 MB.
+2019-07-24T21:46:50.546362Z 0 [Note] InnoDB: 96 redo rollback segment(s) found. 96 redo rollback segment(s) are active.
+2019-07-24T21:46:50.546444Z 0 [Note] InnoDB: 32 non-redo rollback segment(s) are active.
+2019-07-24T21:46:50.548652Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-24T21:46:50.601093Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-24T21:46:50.651697Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-24T21:46:50.780753Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-24T21:46:50.836620Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-24T21:46:50.886932Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-24T21:46:50.937515Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-24T21:46:50.987753Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-24T21:46:51.038867Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-24T21:46:51.089769Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-24T21:46:51.139943Z 0 [Note] InnoDB: Waiting for purge to start
+2019-07-24T21:46:51.196364Z 0 [Note] InnoDB: 5.7.25 started; log sequence number 12360372
+2019-07-24T21:46:51.265266Z 0 [Note] InnoDB: Loading buffer pool(s) from /var/lib/mysql/ib_buffer_pool
+2019-07-24T21:46:51.531175Z 0 [Note] Plugin 'FEDERATED' is disabled.
+2019-07-24T21:46:52.562878Z 0 [Note] InnoDB: Buffer pool(s) load completed at 190724 21:46:52
+2019-07-24T21:46:54.291410Z 0 [Note] Found ca.pem, server-cert.pem and server-key.pem in data directory. Trying to enable SSL support using them.
+2019-07-24T21:46:54.849878Z 0 [Warning] CA certificate ca.pem is self signed.
+2019-07-24T21:46:55.086963Z 0 [Note] Server hostname (bind-address): '*'; port: 3306
+2019-07-24T21:46:55.088153Z 0 [Note] IPv6 is available.
+2019-07-24T21:46:55.157487Z 0 [Note]   - '::' resolves to '::';
+2019-07-24T21:46:55.160753Z 0 [Note] Server socket created on IP: '::'.
+2019-07-24T21:46:55.183887Z 0 [Warning] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+2019-07-24T21:46:56.494872Z 0 [Warning] 'user' entry 'root@localhost' ignored in --skip-name-resolve mode.
+2019-07-24T21:46:56.494952Z 0 [Warning] 'user' entry 'mysql.session@localhost' ignored in --skip-name-resolve mode.
+2019-07-24T21:46:56.494974Z 0 [Warning] 'user' entry 'mysql.sys@localhost' ignored in --skip-name-resolve mode.
+2019-07-24T21:46:56.495534Z 0 [Warning] 'db' entry 'performance_schema mysql.session@localhost' ignored in --skip-name-resolve mode.
+2019-07-24T21:46:56.495591Z 0 [Warning] 'db' entry 'sys mysql.sys@localhost' ignored in --skip-name-resolve mode.
+2019-07-24T21:46:56.496336Z 0 [Warning] 'proxies_priv' entry '@ root@localhost' ignored in --skip-name-resolve mode.
+2019-07-24T21:46:57.579540Z 0 [Warning] 'tables_priv' entry 'user mysql.session@localhost' ignored in --skip-name-resolve mode.
+2019-07-24T21:46:57.579766Z 0 [Warning] 'tables_priv' entry 'sys_config mysql.sys@localhost' ignored in --skip-name-resolve mode.
+2019-07-24T21:46:57.685888Z 0 [Note] Event Scheduler: Loaded 0 events
+2019-07-24T21:46:57.695626Z 0 [Note] mysqld: ready for connections.
+Version: '5.7.25'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server (GPL)
+
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s (master)
+λ kubectl get pods
+NAME                              READY   STATUS    RESTARTS   AGE
+blog-db-dep-7c8f99fccd-mcw8f      1/1     Running   0          2m51s
+helloworld-dep-6b5cd64d8d-vnbnh   1/1     Running   0          21m
+helloworld-dep-6b5cd64d8d-w6hj6   1/1     Running   0          21m
+
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s (master)
+λ kubectl exec -it blog-db-dep-7c8f99fccd-mcw8f --container db mysql -uroot -pwelcome
+Error: unknown shorthand flag: 'u' in -uroot
+
+
+Examples:
+  # Get output from running 'date' command from pod mypod, using the first container by default
+  kubectl exec mypod date
+
+  # Get output from running 'date' command in ruby-container from pod mypod
+  kubectl exec mypod -c ruby-container date
+
+  # Switch to raw terminal mode, sends stdin to 'bash' in ruby-container from pod mypod
+  # and sends stdout/stderr from 'bash' back to the client
+  kubectl exec mypod -c ruby-container -i -t -- bash -il
+
+  # List contents of /usr from the first container of pod mypod and sort by modification time.
+  # If the command you want to execute in the pod has any flags in common (e.g. -i),
+  # you must use two dashes (--) to separate your command's flags/arguments.
+  # Also note, do not surround your command and its flags/arguments with quotes
+  # unless that is how you would execute it normally (i.e., do ls -t /usr, not "ls -t /usr").
+  kubectl exec mypod -i -t -- ls -t /usr
+
+  # Get output from running 'date' command from the first pod of the deployment mydeployment, using the first container by default
+  kubectl exec deploy/mydeployment date
+
+  # Get output from running 'date' command from the first pod of the service myservice, using the first container by default
+  kubectl exec svc/myservice date
+
+Options:
+  -c, --container='': Container name. If omitted, the first container in the pod will be chosen
+      --pod-running-timeout=1m0s: The length of time (like 5s, 2m, or 3h, higher than zero) to wait until at least one pod is running
+  -i, --stdin=false: Pass stdin to the container
+  -t, --tty=false: Stdin is a TTY
+
+Usage:
+  kubectl exec (POD | TYPE/NAME) [-c CONTAINER] [flags] -- COMMAND [args...] [options]
+
+Use "kubectl options" for a list of global command-line options (applies to all commands).
+
+unknown shorthand flag: 'u' in -uroot
+
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s (master)
+λ kubectl exec -it blog-db-dep-7c8f99fccd-mcw8f --container db -- mysql -uroot -pwelcome
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 2
+Server version: 5.7.25 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.02 sec)
+
+mysql> exit
+Bye
+
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s (master)
+λ
