@@ -570,3 +570,67 @@ helloworld-controller-f9n2j   1/1     Running   0          9m34s   app=helloworl
 
 Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s (master)
 λ
+
+
+-----------------------------------------------------------------------------------
+
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s (master)
+λ kubectl delete rc helloworld-controller
+replicationcontroller "helloworld-controller" deleted
+
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s (master)
+λ kubectl get pods
+No resources found.
+
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s (master)
+λ kubectl apply -f dep/dep-helloworld.yml
+deployment.extensions/helloworld-dep created
+
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s (master)
+λ kubectl get deploy
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+helloworld-dep   0/2     2            0           24s
+
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s (master)
+λ kubectl get pods
+NAME                              READY   STATUS    RESTARTS   AGE
+helloworld-dep-6b5cd64d8d-5mfrx   1/1     Running   0          36s
+helloworld-dep-6b5cd64d8d-6n2vz   1/1     Running   0          36s
+
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s (master)
+λ #kubectl scale rc helloworld-controller --replicas 2
+
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s (master)
+λ kubectl scale deploy helloworld-dep --replicas 10
+deployment.extensions/helloworld-dep scaled
+
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s (master)
+λ kubectl get pods
+NAME                              READY   STATUS              RESTARTS   AGE
+helloworld-dep-6b5cd64d8d-5mfrx   1/1     Running             0          108s
+helloworld-dep-6b5cd64d8d-5qgbn   0/1     ContainerCreating   0          12s
+helloworld-dep-6b5cd64d8d-6n2vz   1/1     Running             0          108s
+helloworld-dep-6b5cd64d8d-g6cxl   1/1     Running             0          12s
+helloworld-dep-6b5cd64d8d-hkjkf   1/1     Running             0          12s
+helloworld-dep-6b5cd64d8d-pvl7g   1/1     Running             0          12s
+helloworld-dep-6b5cd64d8d-sjj8j   1/1     Running             0          12s
+helloworld-dep-6b5cd64d8d-sxrvt   1/1     Running             0          12s
+helloworld-dep-6b5cd64d8d-xm8n5   1/1     Running             0          12s
+helloworld-dep-6b5cd64d8d-xnndx   0/1     ContainerCreating   0          12s
+
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s (master)
+λ kubectl get pods
+NAME                              READY   STATUS    RESTARTS   AGE
+helloworld-dep-6b5cd64d8d-5mfrx   1/1     Running   0          3m11s
+helloworld-dep-6b5cd64d8d-5qgbn   1/1     Running   0          95s
+helloworld-dep-6b5cd64d8d-6n2vz   1/1     Running   0          3m11s
+helloworld-dep-6b5cd64d8d-g6cxl   1/1     Running   0          95s
+helloworld-dep-6b5cd64d8d-hkjkf   1/1     Running   0          95s
+helloworld-dep-6b5cd64d8d-pvl7g   1/1     Running   0          95s
+helloworld-dep-6b5cd64d8d-sjj8j   1/1     Running   0          95s
+helloworld-dep-6b5cd64d8d-sxrvt   1/1     Running   0          95s
+helloworld-dep-6b5cd64d8d-xm8n5   1/1     Running   0          95s
+helloworld-dep-6b5cd64d8d-xnndx   1/1     Running   0          95s
+
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s (master)
+λ
