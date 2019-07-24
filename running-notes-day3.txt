@@ -320,3 +320,93 @@ e41417a0de31: Pushed
 latest: digest: sha256:552bc313c1ef3c13110644b01d4cd6a9ceb0d7b2d6085eebc0154064cfaff1c1 size: 1157
 
 /home/docker>
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------
+
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s (master)
+λ ls
+dep/  newcluster/  pod/  pv-pvc/  rc/  resource-quota/  service/
+
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s (master)
+λ ls pod/
+pod-helloworld.yml
+
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s (master)
+λ kubectl get pods
+No resources found.
+
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s (master)
+λ
+
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s (master)
+λ kubectl apply -f pod/pod-helloworld.yml
+pod/my-nginx created
+
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s (master)
+λ kubectl get pods
+NAME       READY   STATUS    RESTARTS   AGE
+my-nginx   1/1     Running   0          107s
+
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s (master)
+λ kubectl get pod
+NAME       READY   STATUS    RESTARTS   AGE
+my-nginx   1/1     Running   0          2m27s
+
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s (master)
+λ kubectl get po
+NAME       READY   STATUS    RESTARTS   AGE
+my-nginx   1/1     Running   0          2m38s
+
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s (master)
+λ kubectl describe pod my-nginx
+Name:         my-nginx
+Namespace:    default
+Node:         minikube/192.168.99.164
+Start Time:   Wed, 24 Jul 2019 23:35:36 +0530
+Labels:       app=helloworld
+Annotations:  kubectl.kubernetes.io/last-applied-configuration:
+                {"apiVersion":"v1","kind":"Pod","metadata":{"annotations":{},"labels":{"app":"helloworld"},"name":"my-nginx","namespace":"default"},"spec"...
+Status:       Running
+IP:           172.17.0.14
+Containers:
+  nginx:
+    Container ID:   docker://53560119efc2b940df262d76cb4fa601ea73fb0285d472a8b5755955930c8835
+    Image:          nginx:alpine
+    Image ID:       docker-pullable://nginx@sha256:482ead44b2203fa32b3390abdaf97cbdc8ad15c07fb03a3e68d7c35a19ad7595
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Wed, 24 Jul 2019 23:35:49 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-448nd (ro)
+Conditions:
+  Type           Status
+  Initialized    True
+  Ready          True
+  PodScheduled   True
+Volumes:
+  default-token-448nd:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-448nd
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     <none>
+Events:
+  Type    Reason                 Age    From               Message
+  ----    ------                 ----   ----               -------
+  Normal  Scheduled              3m15s  default-scheduler  Successfully assigned my-nginx to minikube
+  Normal  SuccessfulMountVolume  3m14s  kubelet, minikube  MountVolume.SetUp succeeded for volume "default-token-448nd"
+  Normal  Pulling                3m13s  kubelet, minikube  pulling image "nginx:alpine"
+  Normal  Pulled                 3m2s   kubelet, minikube  Successfully pulled image "nginx:alpine"
+  Normal  Created                3m2s   kubelet, minikube  Created container
+  Normal  Started                3m2s   kubelet, minikube  Started container
+
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s (master)
