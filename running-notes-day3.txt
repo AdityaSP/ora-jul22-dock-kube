@@ -1,0 +1,322 @@
+login as: docker
+docker@192.168.99.164's password:
+Access denied
+docker@192.168.99.164's password:
+                         _             _
+            _         _ ( )           ( )
+  ___ ___  (_)  ___  (_)| |/')  _   _ | |_      __
+/' _ ` _ `\| |/' _ `\| || , <  ( ) ( )| '_`\  /'__`\
+| ( ) ( ) || || ( ) || || |\`\ | (_) || |_) )(  ___/
+(_) (_) (_)(_)(_) (_)(_)(_) (_)`\___/'(_,__/'`\____)
+
+$ export PS1='\n$PWD>'
+
+/home/docker>
+
+/home/docker>export PS1='\n$PWD> '
+
+/home/docker> docker network prune
+WARNING! This will remove all networks not used by at least one container.
+Are you sure you want to continue? [y/N] y
+Deleted Networks:
+w2-db-net
+w1-db-net
+
+
+/home/docker> docker container prune
+WARNING! This will remove all stopped containers.
+Are you sure you want to continue? [y/N] y
+Deleted Containers:
+3d145c592a6ab76060a3595bba9478a0f637852147ee105d170636228869340d
+d07737bd40575edeba5207570b5e3227a681bec47589d93e1d62573e793712cb
+36061c05ad13940426adabd1bcf64308fdc36d2947d3ee6ac95d1262bcf21799
+44b8dce848f07c7270c0e4ac7cee29bdcb20d73c10964eadfc3588517de7b60e
+100d410b1a82b1d6cd2f1b557ddb372bb3a2a9fb529f5791c0638a94f68cb310
+4bd47332846c814d5226a35fdd23affa4bc1e2d63edaead5d2d3ccc3e3fb22a7
+acecbc48ae2410f1ce02c5a393ffdf957866029a0a7ae36aea035bfc0a6e334d
+5417d1ba5fa346acfc50de1afd02417895519a62eb2818e4a7087f14a8605f1f
+b713193d1e9fe0b46d64cee05ec340437804b2b81444e760b807d51d16bc8540
+7d9d9d48a3c2afe5c4cda19d353b1c55b6500527a1c2db1c7e98af5a7224095f
+f54ca0b1a01b0123cd20889fd839c69a6032bbac6caed25caa96cf25d9fb811e
+1848880dee9607a1a13d544466737fbccb08e3bf5d71f913339c88d4b481346d
+9332366c8170e1de77bd7fb68cac344284ffccb585e61a04a777f2588b9c4f7b
+35423601839c115c7b63be83542de944412389eaa5d488a09c12663acbbf1b95
+72cf1a549da3438d977d00cad10879f24d0869d8cbfa1ba12bc0eb66d25869fb
+0b882d74735f7ffdc004f57996fab6c298cc99ac7b8cc8cc3313cae62c07874e
+8f9d840ef427cd7ebb31416552098af4b17a62d1fa05e2224ee5adb172b04dfc
+c42c4cded43fa587f1cb6389b70188e0170f47e5f2a84be47ebf789d5515a326
+1f0d8fe18ff4e470252b87bd71219183d7fc7c1c4045e0cc77f4caf33a367daa
+caa0182a0eee5579a99c85c99043dbf8eedb96dc8a7242c42f8c229da04f5648
+6aa4ce712ad1d2e7af991bf8d28cab122e05c6d77d52c684446f86b46df019ca
+44756e67caf16c32553793a5e70ff24a5c477e7504cc7323314a052af413450b
+b4f75b6cec2c0467dfc8bfc55d28068f820596cb6aad019bf8ce71e8e15a8aee
+42a8dcee8c7266f624f790f0d6c980e9f22102d18db9de17a26d3539dcf426be
+3dd89384ec80884eae82e660bae6d7a4027969bfce6579da1890529d0c82c611
+bcb57c551ad957b0928c32e5b7a42ec077ac63dd41facb8e9e2d2347992bfde1
+655d805031ab21768fda34a1b8d6410ce18dd70b506c9ad43c8da249209afc7a
+d6e3345abf7c77454ce97614144ef5b9978407d1a9eba7e963466df11968c4a9
+7e825cbdb19468b91c94fa60a3b6cb84af8e049cec2f3a10106ed6948281f016
+d6d2daaa2308759defac075b8924df42976f799bccedb7f7df68a5908c632b0a
+95f6bcf27c6548fd1e173e7e834191ddf1991f72e0d6c47eb6b9ca67ca571a8d
+
+Total reclaimed space: 1.564MB
+
+/home/docker>
+
+/home/docker> docker image history ghost:1-alpine
+IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
+d92b0a9ac458        7 weeks ago         /bin/sh -c #(nop)  CMD ["node" "current/in...   0B
+<missing>           7 weeks ago         /bin/sh -c #(nop)  EXPOSE 2368                  0B
+<missing>           7 weeks ago         /bin/sh -c #(nop)  ENTRYPOINT ["docker-ent...   0B
+<missing>           7 weeks ago         /bin/sh -c #(nop) COPY file:f1f79dab1b0ea9...   678B
+<missing>           7 weeks ago         /bin/sh -c #(nop)  VOLUME [/var/lib/ghost/...   0B
+<missing>           7 weeks ago         /bin/sh -c #(nop) WORKDIR /var/lib/ghost        0B
+<missing>           7 weeks ago         /bin/sh -c set -eux;  cd "$GHOST_INSTALL/c...   22MB
+<missing>           7 weeks ago         /bin/sh -c #(nop)  ENV PATH=/usr/local/sbi...   0B
+<missing>           7 weeks ago         /bin/sh -c set -ex;  mkdir -p "$GHOST_INST...   308MB
+<missing>           7 weeks ago         /bin/sh -c #(nop)  ENV GHOST_VERSION=1.25.8     0B
+<missing>           7 weeks ago         /bin/sh -c #(nop)  ENV GHOST_CONTENT=/var/...   0B
+<missing>           7 weeks ago         /bin/sh -c #(nop)  ENV GHOST_INSTALL=/var/...   0B
+<missing>           7 weeks ago         /bin/sh -c npm install -g "ghost-cli@$GHOS...   35.5MB
+<missing>           7 weeks ago         /bin/sh -c #(nop)  ENV GHOST_CLI_VERSION=1...   0B
+<missing>           7 weeks ago         /bin/sh -c #(nop)  ENV NODE_ENV=production      0B
+<missing>           7 weeks ago         /bin/sh -c apk add --no-cache   bash            4.03MB
+<missing>           7 weeks ago         /bin/sh -c apk add --no-cache 'su-exec>=0.2'    36.4kB
+<missing>           7 weeks ago         /bin/sh -c #(nop)  CMD ["node"]                 0B
+<missing>           7 weeks ago         /bin/sh -c #(nop)  ENTRYPOINT ["docker-ent...   0B
+<missing>           7 weeks ago         /bin/sh -c #(nop) COPY file:238737301d4730...   116B
+<missing>           2 months ago        /bin/sh -c apk add --no-cache --virtual .b...   5.1MB
+<missing>           2 months ago        /bin/sh -c #(nop)  ENV YARN_VERSION=1.15.2      0B
+<missing>           2 months ago        /bin/sh -c addgroup -g 1000 node     && ad...   56MB
+<missing>           2 months ago        /bin/sh -c #(nop)  ENV NODE_VERSION=8.16.0      0B
+<missing>           2 months ago        /bin/sh -c #(nop)  CMD ["/bin/sh"]              0B
+<missing>           2 months ago        /bin/sh -c #(nop) ADD file:a86aea1f3a7d68f...   5.53MB
+
+/home/docker> cd /c/Users/Dell\ lap/docker-workshop/jul22/app/
+
+/c/Users/Dell lap/docker-workshop/jul22/app> vi Dockerfile
+
+/c/Users/Dell lap/docker-workshop/jul22/app> docker image history mysql:5.7
+IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
+98455b9624a9        3 months ago        /bin/sh -c #(nop)  CMD ["mysqld"]               0B
+<missing>           3 months ago        /bin/sh -c #(nop)  EXPOSE 3306 33060            0B
+<missing>           3 months ago        /bin/sh -c #(nop)  ENTRYPOINT ["docker-ent...   0B
+<missing>           3 months ago        /bin/sh -c ln -s usr/local/bin/docker-entr...   34B
+<missing>           3 months ago        /bin/sh -c #(nop) COPY file:aa86b132b6a63c...   6.39kB
+<missing>           3 months ago        /bin/sh -c #(nop)  VOLUME [/var/lib/mysql]      0B
+<missing>           3 months ago        /bin/sh -c {   echo mysql-community-server...   257MB
+<missing>           3 months ago        /bin/sh -c echo "deb http://repo.mysql.com...   56B
+<missing>           3 months ago        /bin/sh -c #(nop)  ENV MYSQL_VERSION=5.7.2...   0B
+<missing>           3 months ago        /bin/sh -c #(nop)  ENV MYSQL_MAJOR=5.7          0B
+<missing>           3 months ago        /bin/sh -c set -ex;  key='A4A9406876FCBD3C...   27.8kB
+<missing>           3 months ago        /bin/sh -c apt-get update && apt-get insta...   44.8MB
+<missing>           3 months ago        /bin/sh -c mkdir /docker-entrypoint-initdb.d    0B
+<missing>           3 months ago        /bin/sh -c set -x  && apt-get update && ap...   4.44MB
+<missing>           3 months ago        /bin/sh -c #(nop)  ENV GOSU_VERSION=1.7         0B
+<missing>           3 months ago        /bin/sh -c apt-get update && apt-get insta...   10.2MB
+<missing>           3 months ago        /bin/sh -c groupadd -r mysql && useradd -r...   329kB
+<missing>           3 months ago        /bin/sh -c #(nop)  CMD ["bash"]                 0B
+<missing>           3 months ago        /bin/sh -c #(nop) ADD file:4fc310c0cb879c8...   55.3MB
+
+/c/Users/Dell lap/docker-workshop/jul22/app>
+
+/c/Users/Dell lap/docker-workshop/jul22/app> cd
+
+/home/docker> docker network create blog-nw
+d6d5051d711a31d78c567c57b14070a3304da9e5a1f95b953adc1830b7bafdb3
+
+/home/docker> docker network inspect blog-nw
+[
+    {
+        "Name": "blog-nw",
+        "Id": "d6d5051d711a31d78c567c57b14070a3304da9e5a1f95b953adc1830b7bafdb3",
+        "Created": "2019-07-24T15:30:07.674591354Z",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": {},
+            "Config": [
+                {
+                    "Subnet": "172.18.0.0/16",
+                    "Gateway": "172.18.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {},
+        "Options": {},
+        "Labels": {}
+    }
+]
+
+/home/docker>
+
+/home/docker> docker container run -d --network blog-nw --name blog-db -v /tmp/blog:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=welcome mysql:5.7
+b357a86f35f541410a21dd38914d3e2f3bb2e09d4c318c0f93067746c294c0fd
+
+/home/docker> docker container run -d --network blog-nw --name blog-ghost -p 9090:2368 -e database__client=mysql -e database__connection__host=blog-db -e database__connection__port=3306 -e database__connection__user=root -e database__connection__password=welcome -e database__connection__database=ghost ghost:1-alpine
+7a3fca9ce7db5fd90b097a2d52b8b1617c398fc40622d3e141c3986f3af757e5
+
+/home/docker> docker container exec -it blog-db mysql -uroot -pwelcome
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 34
+Server version: 5.7.25 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| ghost              |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> use ghost;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++------------------------+
+| Tables_in_ghost        |
++------------------------+
+| accesstokens           |
+| app_fields             |
+| app_settings           |
+| apps                   |
+| brute                  |
+| client_trusted_domains |
+| clients                |
+| invites                |
+| migrations             |
+| migrations_lock        |
+| permissions            |
+| permissions_apps       |
+| permissions_roles      |
+| permissions_users      |
+| posts                  |
+| posts_authors          |
+| posts_tags             |
+| refreshtokens          |
+| roles                  |
+| roles_users            |
+| settings               |
+| subscribers            |
+| tags                   |
+| users                  |
+| webhooks               |
++------------------------+
+25 rows in set (0.00 sec)
+
+mysql> exit
+Bye
+
+/home/docker> cd /tmp/
+.ICE-unix/
+.Test-unix/
+.X11-unix/
+.XIM-unix/
+.font-unix/
+blog/
+hostpath-provisioner/
+hostpath_pv/
+k8s-dns-dnsmasq-nanny-amd64_1.14.5
+k8s-dns-kube-dns-amd64_1.14.5
+k8s-dns-sidecar-amd64_1.14.5
+kube-addon-manager_v6.5
+kubernetes-dashboard-amd64_v1.8.1
+pause-amd64_3.0
+storage-provisioner_v1.8.0
+systemd-private-9c38aa4eabc949b2b1e83178f1c0e0f9-systemd-resolved.service-86jRLB/
+systemd-private-9c38aa4eabc949b2b1e83178f1c0e0f9-systemd-timesyncd.service-5zJn6h/
+
+/home/docker> cd /tmp/blog/
+
+/tmp/blog> ls
+auto.cnf         ghost           ibtmp1              server-cert.pem
+ca-key.pem       ib_buffer_pool  mysql               server-key.pem
+ca.pem           ib_logfile0     performance_schema  sys
+client-cert.pem  ib_logfile1     private_key.pem
+client-key.pem   ibdata1         public_key.pem
+
+/tmp/blog> cd -
+/home/docker
+
+/home/docker> app
+-bash: app: command not found
+
+/home/docker> docker image ls app
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+app                 3                   8451096077fd        22 hours ago        10.6MB
+app                 latest              8451096077fd        22 hours ago        10.6MB
+app                 2                   ac0f61f72db3        24 hours ago        10.6MB
+app                 1                   c1b3787a442c        24 hours ago        10.6MB
+app                 delta               c1b3787a442c        24 hours ago        10.6MB
+
+/home/docker> docker image push app
+The push refers to a repository [docker.io/library/app]
+e41417a0de31: Preparing
+9664132139fa: Preparing
+1bfeebd65323: Preparing
+denied: requested access to the resource is denied
+
+/home/docker> docker login
+Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
+Username: adityaprabhakara
+Password:
+Login Succeeded
+
+/home/docker> docker image push app
+The push refers to a repository [docker.io/library/app]
+e41417a0de31: Preparing
+9664132139fa: Preparing
+1bfeebd65323: Preparing
+denied: requested access to the resource is denied
+
+/home/docker> docker image push adityaprabhakara/app
+The push refers to a repository [docker.io/adityaprabhakara/app]
+An image does not exist locally with the tag: adityaprabhakara/app
+
+/home/docker> docker image tag app adityaprabhakara/app
+
+/home/docker> docker image ls app
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+app                 3                   8451096077fd        22 hours ago        10.6MB
+app                 latest              8451096077fd        22 hours ago        10.6MB
+app                 2                   ac0f61f72db3        24 hours ago        10.6MB
+app                 1                   c1b3787a442c        25 hours ago        10.6MB
+app                 delta               c1b3787a442c        25 hours ago        10.6MB
+
+/home/docker> docker image ls adityaprabhakara/app
+REPOSITORY             TAG                 IMAGE ID            CREATED             SIZE
+adityaprabhakara/app   latest              8451096077fd        22 hours ago        10.6MB
+
+/home/docker> docker image push adityaprabhakara/app
+The push refers to a repository [docker.io/adityaprabhakara/app]
+dbfd2e1c0900: Pushed
+e41417a0de31: Pushed
+9664132139fa: Pushed
+1bfeebd65323: Pushed
+latest: digest: sha256:552bc313c1ef3c13110644b01d4cd6a9ceb0d7b2d6085eebc0154064cfaff1c1 size: 1157
+
+/home/docker>
