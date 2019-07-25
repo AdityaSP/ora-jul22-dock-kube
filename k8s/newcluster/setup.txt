@@ -1,5 +1,5 @@
-1. Vagrant installation from https://www.vagrantup.com/downloads.html
-Click through installation of vagrant
+1. Install Vagrant from https://www.vagrantup.com/downloads.html
+(Hint: Click through installation of vagrant)
 
 2. Only for old windows machines
     2.1 check for powershell version
@@ -7,11 +7,14 @@ Click through installation of vagrant
     2.2 if version is less than 3 then you upgrade your powershell
         https://www.microsoft.com/en-us/download/details.aspx?id=54616
         
-3. Download folder new cluster        
+3. Download folder newcluster from this github URL        
 
-4. Move into that folder the contains "Vagrantfile" and execute the following command
+4. cd into "newcluster" folder ( The one that contains "Vagrantfile") and execute the following command
 
 CMD> vagrant up
+
+
+#The above command will bring up two Virtual Machines K8smaster and k8snode1
 
 ON K8SMASTER : ip 192.167.10.70  Uname: vagrant Pwd vagrant
 1. Log in as root
