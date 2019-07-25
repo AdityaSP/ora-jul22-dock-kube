@@ -19,3 +19,19 @@ spec:
         env:
         - name: MYSQL_ROOT_PASSWORD
           value: welcome
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: blog-db-svc
+spec:
+  ports:
+  - port: 8888
+    targetPort: dbport
+    protocol: TCP
+  selector:
+    blog: blog-db
+  type: ClusterIP
+          
