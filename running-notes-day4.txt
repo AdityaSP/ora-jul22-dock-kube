@@ -353,3 +353,20 @@ External Traffic Policy:  Cluster
 Events:                   <none>
 Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s (master)
 λ
+
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s (master)
+λ kubectl get nodes
+NAME        STATUS     ROLES    AGE   VERSION
+k8smaster   NotReady   master   35m   v1.15.1
+k8snode1    NotReady   <none>   17m   v1.15.1
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s (master)
+λ kubectl config get-contexts
+CURRENT   NAME                          CLUSTER      AUTHINFO           NAMESPACE
+*         kubernetes-admin@kubernetes   kubernetes   kubernetes-admin
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s (master)
+λ kubectl get nodes
+NAME        STATUS     ROLES    AGE   VERSION
+k8smaster   NotReady   master   37m   v1.15.1
+k8snode1    NotReady   <none>   19m   v1.15.1
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s (master)
+λ
