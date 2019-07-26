@@ -1,0 +1,64 @@
+Dell lap@Dell ~
+λ kubectl get nodes
+NAME        STATUS     ROLES    AGE   VERSION
+k8smaster   NotReady   master   18h   v1.15.1
+k8snode1    NotReady   <none>   18h   v1.15.1
+Dell lap@Dell ~
+λ cd docker-workshop/
+Display all 44 possibilities? (y or n)
+Dell lap@Dell ~
+λ cd docker-workshop/jul22/ora-jul22-dock-kube/k8s/newcluster/
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s/newcluster (master)
+λ ls
+canal.yml               kube-master.sh     node-output.txt  readme.md  Vagrantfile
+kube-installations.sh*  master-output.txt  rbac.yml         setup.txt
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s/newcluster (master)
+λ kubectl apply -f rbac.yml
+clusterrole.rbac.authorization.k8s.io/calico created
+clusterrole.rbac.authorization.k8s.io/flannel created
+clusterrolebinding.rbac.authorization.k8s.io/canal-flannel created
+clusterrolebinding.rbac.authorization.k8s.io/canal-calico created
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s/newcluster (master)
+λ kubectl apply -f canal.yml
+configmap/canal-config created
+daemonset.extensions/canal created
+customresourcedefinition.apiextensions.k8s.io/felixconfigurations.crd.projectcalico.org created customresourcedefinition.apiextensions.k8s.io/bgpconfigurations.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/ippools.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/clusterinformations.crd.projectcalico.org created customresourcedefinition.apiextensions.k8s.io/globalnetworkpolicies.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/networkpolicies.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/globalnetworksets.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/hostendpoints.crd.projectcalico.org created
+serviceaccount/canal created
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s/newcluster (master)
+λ kubectl get nodes
+NAME        STATUS     ROLES    AGE   VERSION
+k8smaster   NotReady   master   19h   v1.15.1
+k8snode1    NotReady   <none>   19h   v1.15.1
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s/newcluster (master)
+λ kubectl get nodes
+NAME        STATUS     ROLES    AGE   VERSION
+k8smaster   NotReady   master   19h   v1.15.1
+k8snode1    NotReady   <none>   19h   v1.15.1
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s/newcluster (master)
+λ kubectl get nodes
+NAME        STATUS   ROLES    AGE   VERSION
+k8smaster   Ready    master   19h   v1.15.1
+k8snode1    Ready    <none>   19h   v1.15.1
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s/newcluster (master)
+λ kubectl config get-contexts
+CURRENT   NAME                          CLUSTER      AUTHINFO           NAMESPACE
+*         kubernetes-admin@kubernetes   kubernetes   kubernetes-admin
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s/newcluster (master)
+λ kubectl config get-contexts
+CURRENT   NAME                          CLUSTER      AUTHINFO           NAMESPACE
+*         kubernetes-admin@kubernetes   kubernetes   kubernetes-admin
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s/newcluster (master)
+λ kubectl get nodes
+NAME        STATUS   ROLES    AGE   VERSION
+k8smaster   Ready    master   19h   v1.15.1
+k8snode1    Ready    <none>   19h   v1.15.1
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s/newcluster (master)
+λ kubectl get pods
+No resources found.
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s/newcluster (master)
+λ
