@@ -117,5 +117,60 @@ k8smaster   Ready    master   19h   v1.15.1
 k8snode1    Ready    <none>   19h   v1.15.1                                                     
 Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s/newcluster (master)               
 λ                                                                                               
+           
+           
+λ kubectl get pods                                                                              
+No resources found.                                                                             
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s/newcluster (master)               
+λ kubectl get ns                                                                                
+NAME              STATUS   AGE                                                                  
+default           Active   19h                                                                  
+kube-node-lease   Active   19h                                                                  
+kube-public       Active   19h                                                                  
+kube-system       Active   19h                                                                  
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s/newcluster (master)               
+λ kubectl get pods -n kube-system                                                               
+NAME                                READY   STATUS    RESTARTS   AGE                            
+canal-cnj9h                         3/3     Running   0          10m                            
+canal-qhjfh                         3/3     Running   0          10m                            
+coredns-5c98db65d4-68c75            1/1     Running   0          19h                            
+coredns-5c98db65d4-w6xr2            1/1     Running   0          19h                            
+etcd-k8smaster                      1/1     Running   1          19h                            
+kube-apiserver-k8smaster            1/1     Running   2          19h                            
+kube-controller-manager-k8smaster   1/1     Running   1          19h                            
+kube-proxy-cg9mc                    1/1     Running   1          19h                            
+kube-proxy-gk6dj                    1/1     Running   1          19h                            
+kube-scheduler-k8smaster            1/1     Running   1          19h                            
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s/newcluster (master)               
+λ kubectl get pods -n kube-system -o wide                                                       
+NAME                                READY   STATUS    RESTARTS   AGE   IP              NODE     
+   NOMINATED NODE   READINESS GATES                                                             
+canal-cnj9h                         3/3     Running   0          10m   192.167.10.71   k8snode1 
+   <none>           <none>                                                                      
+canal-qhjfh                         3/3     Running   0          10m   192.167.10.70   k8smaster
+   <none>           <none>                                                                      
+coredns-5c98db65d4-68c75            1/1     Running   0          19h   192.168.1.105   k8snode1 
+   <none>           <none>                                                                      
+coredns-5c98db65d4-w6xr2            1/1     Running   0          19h   192.168.0.36    k8smaster
+   <none>           <none>                                                                      
+etcd-k8smaster                      1/1     Running   1          19h   192.167.10.70   k8smaster
+   <none>           <none>                                                                      
+kube-apiserver-k8smaster            1/1     Running   2          19h   192.167.10.70   k8smaster
+   <none>           <none>                                                                      
+kube-controller-manager-k8smaster   1/1     Running   1          19h   192.167.10.70   k8smaster
+   <none>           <none>                                                                      
+kube-proxy-cg9mc                    1/1     Running   1          19h   192.167.10.70   k8smaster
+   <none>           <none>                                                                      
+kube-proxy-gk6dj                    1/1     Running   1          19h   192.167.10.71   k8snode1 
+   <none>           <none>                                                                      
+kube-scheduler-k8smaster            1/1     Running   1          19h   192.167.10.70   k8smaster
+   <none>           <none>                                                                      
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s/newcluster (master)               
+λ kubectl get nodes                                                                             
+NAME        STATUS   ROLES    AGE   VERSION                                                     
+k8smaster   Ready    master   19h   v1.15.1                                                     
+k8snode1    Ready    <none>   19h   v1.15.1                                                     
+Dell lap@Dell ~/docker-workshop/jul22/ora-jul22-dock-kube/k8s/newcluster (master)               
+λ                                                                                               
                                                                                                 
                                                                                                 
