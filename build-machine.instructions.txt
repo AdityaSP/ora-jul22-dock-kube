@@ -69,3 +69,100 @@ JENKINS_INCREMENTALS_REPO_MIRROR=https://repo.jenkins-ci.org/incrementals
 COPY_REFERENCE_FILE_LOG=/var/jenkins_home/copy_reference_file.log
 HOME=/root
 root@k8smaster:/home/vagrant/build-machine#
+
+root@k8smaster:/home/vagrant/build-machine# docker container exec 2219b3f env
+PATH=/usr/local/openjdk-8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+HOSTNAME=2219b3f06e5b
+KUBECONFIG=/tmp/kube.conf
+LANG=C.UTF-8
+JAVA_HOME=/usr/local/openjdk-8
+JAVA_VERSION=8u212-b04
+JAVA_BASE_URL=https://github.com/AdoptOpenJDK/openjdk8-upstream-binaries/releases/download/jdk8u212-b04/OpenJDK8U-
+JAVA_URL_VERSION=8u212b04
+JENKINS_HOME=/var/jenkins_home
+JENKINS_SLAVE_AGENT_PORT=50000
+JENKINS_VERSION=2.176.2
+JENKINS_UC=https://updates.jenkins.io
+JENKINS_UC_EXPERIMENTAL=https://updates.jenkins.io/experimental
+JENKINS_INCREMENTALS_REPO_MIRROR=https://repo.jenkins-ci.org/incrementals
+COPY_REFERENCE_FILE_LOG=/var/jenkins_home/copy_reference_file.log
+HOME=/root
+root@k8smaster:/home/vagrant/build-machine# docker container logs -f 2219b3f
+Running from: /usr/share/jenkins/jenkins.war
+webroot: EnvVars.masterEnvVars.get("JENKINS_HOME")
+Jul 26, 2019 6:23:12 PM org.eclipse.jetty.util.log.Log initialized
+INFO: Logging initialized @5126ms to org.eclipse.jetty.util.log.JavaUtilLog
+Jul 26, 2019 6:23:12 PM winstone.Logger logInternal
+INFO: Beginning extraction from war file
+Jul 26, 2019 6:23:12 PM org.eclipse.jetty.server.handler.ContextHandler setContextPath
+WARNING: Empty contextPath
+Jul 26, 2019 6:23:13 PM org.eclipse.jetty.server.Server doStart
+INFO: jetty-9.4.z-SNAPSHOT; built: 2019-02-15T16:53:49.381Z; git: eb70b240169fcf1abbd86af36482d1c49826fa0b; jvm 1.8.0_212-b04
+Jul 26, 2019 6:23:56 PM org.eclipse.jetty.webapp.StandardDescriptorProcessor visitServlet
+INFO: NO JSP Support for /, did not find org.eclipse.jetty.jsp.JettyJspServlet
+Jul 26, 2019 6:23:57 PM org.eclipse.jetty.server.session.DefaultSessionIdManager doStart
+INFO: DefaultSessionIdManager workerName=node0
+Jul 26, 2019 6:23:57 PM org.eclipse.jetty.server.session.DefaultSessionIdManager doStart
+INFO: No SessionScavenger set, using defaults
+Jul 26, 2019 6:23:57 PM org.eclipse.jetty.server.session.HouseKeeper startScavenging
+INFO: node0 Scavenging every 660000ms
+Jenkins home directory: /var/jenkins_home found at: EnvVars.masterEnvVars.get("JENKINS_HOME")
+Jul 26, 2019 6:24:04 PM org.eclipse.jetty.server.handler.ContextHandler doStart
+INFO: Started w.@d2de489{Jenkins v2.176.2,/,file:///var/jenkins_home/war/,AVAILABLE}{/var/jenkins_home/war}
+Jul 26, 2019 6:24:05 PM org.eclipse.jetty.server.AbstractConnector doStart
+INFO: Started ServerConnector@72d9c78a{HTTP/1.1,[http/1.1]}{0.0.0.0:8080}
+Jul 26, 2019 6:24:05 PM org.eclipse.jetty.server.Server doStart
+INFO: Started @58526ms
+Jul 26, 2019 6:24:05 PM winstone.Logger logInternal
+INFO: Winstone Servlet Engine v4.0 running: controlPort=disabled
+Jul 26, 2019 6:24:11 PM jenkins.InitReactorRunner$1 onAttained
+INFO: Started initialization
+Jul 26, 2019 6:25:12 PM jenkins.InitReactorRunner$1 onAttained
+INFO: Listed all plugins
+Jul 26, 2019 6:25:54 PM jenkins.InitReactorRunner$1 onAttained
+INFO: Prepared all plugins
+Jul 26, 2019 6:25:54 PM jenkins.InitReactorRunner$1 onAttained
+INFO: Started all plugins
+Jul 26, 2019 6:26:06 PM hudson.ExtensionFinder$GuiceFinder$FaultTolerantScope$1 error
+INFO: Failed to instantiate optional component hudson.plugins.build_timeout.operations.AbortAndRestartOperation$DescriptorImpl; skipping
+Jul 26, 2019 6:26:10 PM jenkins.InitReactorRunner$1 onAttained
+INFO: Augmented all extensions
+Jul 26, 2019 6:26:12 PM jenkins.InitReactorRunner$1 onAttained
+INFO: Loaded all jobs
+Jul 26, 2019 6:26:13 PM hudson.model.AsyncPeriodicWork$1 run
+INFO: Started Download metadata
+Jul 26, 2019 6:26:14 PM hudson.util.Retrier start
+INFO: Attempt #1 to do the action check updates server
+Jul 26, 2019 6:26:17 PM org.springframework.context.support.AbstractApplicationContext prepareRefresh
+INFO: Refreshing org.springframework.web.context.support.StaticWebApplicationContext@c486520: display name [Root WebApplicationContext]; startup date [Fri Jul 26 18:26:17 UTC 2019]; root of context hierarchy
+Jul 26, 2019 6:26:17 PM org.springframework.context.support.AbstractApplicationContext obtainFreshBeanFactory
+INFO: Bean factory for application context [org.springframework.web.context.support.StaticWebApplicationContext@c486520]: org.springframework.beans.factory.support.DefaultListableBeanFactory@5b91053d
+Jul 26, 2019 6:26:17 PM org.springframework.beans.factory.support.DefaultListableBeanFactory preInstantiateSingletons
+INFO: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@5b91053d: defining beans [authenticationManager]; root of factory hierarchy
+Jul 26, 2019 6:26:18 PM org.springframework.context.support.AbstractApplicationContext prepareRefresh
+INFO: Refreshing org.springframework.web.context.support.StaticWebApplicationContext@78a7f9a6: display name [Root WebApplicationContext]; startup date [Fri Jul 26 18:26:18 UTC 2019]; root of context hierarchy
+Jul 26, 2019 6:26:18 PM org.springframework.context.support.AbstractApplicationContext obtainFreshBeanFactory
+INFO: Bean factory for application context [org.springframework.web.context.support.StaticWebApplicationContext@78a7f9a6]: org.springframework.beans.factory.support.DefaultListableBeanFactory@749bff16
+Jul 26, 2019 6:26:18 PM org.springframework.beans.factory.support.DefaultListableBeanFactory preInstantiateSingletons
+INFO: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@749bff16: defining beans [filter,legacy]; root of factory hierarchy
+Jul 26, 2019 6:26:18 PM jenkins.InitReactorRunner$1 onAttained
+INFO: Completed initialization
+Jul 26, 2019 6:26:20 PM hudson.WebAppMain$3 run
+INFO: Jenkins is fully up and running
+Jul 26, 2019 6:26:39 PM hudson.model.UpdateSite updateData
+INFO: Obtained the latest update center data file for UpdateSource default
+Jul 26, 2019 6:26:42 PM hudson.model.DownloadService$Downloadable load
+INFO: Obtained the updated data file for hudson.tasks.Maven.MavenInstaller
+Jul 26, 2019 6:26:44 PM hudson.model.DownloadService$Downloadable load
+INFO: Obtained the updated data file for hudson.tasks.Ant.AntInstaller
+Jul 26, 2019 6:26:46 PM hudson.model.DownloadService$Downloadable load
+INFO: Obtained the updated data file for hudson.plugins.gradle.GradleInstaller
+Jul 26, 2019 6:26:58 PM hudson.model.DownloadService$Downloadable load
+INFO: Obtained the updated data file for hudson.tools.JDKInstaller
+Jul 26, 2019 6:26:58 PM hudson.util.Retrier start
+INFO: Performed the action check updates server successfully at the attempt #1
+Jul 26, 2019 6:26:58 PM hudson.model.AsyncPeriodicWork$1 run
+INFO: Finished Download metadata. 44,845 ms
+Jul 26, 2019 6:33:06 PM org.kohsuke.stapler.LocaleDrivenResourceProvider getLocaleDrivenResourceProviders
+INFO: Registered LocaleDrivenResourceProvider: jenkins.MetaLocaleDrivenResourceProvider@5eb3081e
+
