@@ -166,3 +166,15 @@ INFO: Finished Download metadata. 44,845 ms
 Jul 26, 2019 6:33:06 PM org.kohsuke.stapler.LocaleDrivenResourceProvider getLocaleDrivenResourceProviders
 INFO: Registered LocaleDrivenResourceProvider: jenkins.MetaLocaleDrivenResourceProvider@5eb3081e
 
+
+
+
+########################## BUILD CONFIGURATION ###############################
+docker build -t <dockerhubusername>/appjul27:$BUILD_NUMBER .;
+docker login -u <dockerhubusername> -p <dockerhubpass>;
+docker image push <dockerhubusername>/appjul27:$BUILD_NUMBER;
+sed -i 's/DOCKERUSER/<dockerhubusername>/' dep.yml;
+sed -i 's/IMAGENAME/appjul27/' dep.yml;
+sed -i "s/BUILDNUMBER/$BUILD_NUMBER/" dep.yml;
+kubectl apply -f dep.yml;
+#######################################################################
