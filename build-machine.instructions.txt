@@ -23,3 +23,49 @@ RUN usermod -aG docker jenkins
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && mv kubectl /bin && chmod +x /bin/kubectl
 RUN apt-get install -y git
 root@k8smaster:/home/vagrant/build-machine# docker image build -t build-machine .
+
+
+
+root@k8smaster:/home/vagrant/build-machine# docker container run -d -v /var/run/docker.sock:/var/run/docker.sock -v /etc/kubernetes/admin.conf:/tmp/kube.conf -e KUBECONFIG=/tmp/kube.conf -v /vagrant/jenkins_home5:/var/jenkins_home -p 9999:8080 build-machine
+2219b3f06e5b0a02436eb7f91647f12fc1dfd96c030288525624363808f2295e
+root@k8smaster:/home/vagrant/build-machine# docker container exec 2219b3f docker container ls
+CONTAINER ID        IMAGE                  COMMAND                  CREATED              STATUS              PORTS                               NAMES
+2219b3f06e5b        build-machine          "/sbin/tini -- /us..."   About a minute ago   Up About a minute   50000/tcp, 0.0.0.0:9999->8080/tcp   nervous_swanson
+adc6df15e9ab        eb516548c180           "/coredns -conf /e..."   2 hours ago          Up 2 hours                                              k8s_coredns_coredns-5c98db65d4-w6xr2_kube-system_25b2de3e-a2a7-4503-bf6f-73bc9b155730_0
+65f4ccb66c04        k8s.gcr.io/pause:3.1   "/pause"                 2 hours ago          Up 2 hours                                              k8s_POD_coredns-5c98db65d4-w6xr2_kube-system_25b2de3e-a2a7-4503-bf6f-73bc9b155730_0
+0041f2bc34ba        2b736d06ca4c           "/opt/bin/flanneld..."   2 hours ago          Up 2 hours                                              k8s_kube-flannel_canal-qhjfh_kube-system_1d881362-e86f-4a5a-9897-26bf8ac18370_0
+4cd44fab6f09        91d623a7690c           "/install-cni.sh"        2 hours ago          Up 2 hours                                              k8s_install-cni_canal-qhjfh_kube-system_1d881362-e86f-4a5a-9897-26bf8ac18370_0
+797c516bb1b8        3030acce0214           "start_runit"            2 hours ago          Up 2 hours                                              k8s_calico-node_canal-qhjfh_kube-system_1d881362-e86f-4a5a-9897-26bf8ac18370_0
+ba7ead2658f0        k8s.gcr.io/pause:3.1   "/pause"                 2 hours ago          Up 2 hours                                              k8s_POD_canal-qhjfh_kube-system_1d881362-e86f-4a5a-9897-26bf8ac18370_0
+6335a2ab928e        89a062da739d           "/usr/local/bin/ku..."   3 hours ago          Up 3 hours                                              k8s_kube-proxy_kube-proxy-cg9mc_kube-system_ef010a9e-e6a9-44b4-a526-7c3d5fc428b4_1
+7d5d5b87d557        k8s.gcr.io/pause:3.1   "/pause"                 3 hours ago          Up 3 hours                                              k8s_POD_kube-proxy-cg9mc_kube-system_ef010a9e-e6a9-44b4-a526-7c3d5fc428b4_1
+9157265d14ca        68c3eb07bfc3           "kube-apiserver --..."   3 hours ago          Up 3 hours                                              k8s_kube-apiserver_kube-apiserver-k8smaster_kube-system_b2668192317977375ccf78a8e7c4086f_2
+6bba3acca197        2c4adeb21b4f           "etcd --advertise-..."   3 hours ago          Up 3 hours                                              k8s_etcd_etcd-k8smaster_kube-system_e5cd44264957d2c95fa822f9036af82e_1
+d77f493753da        b0b3c4c404da           "kube-scheduler --..."   3 hours ago          Up 3 hours                                              k8s_kube-scheduler_kube-scheduler-k8smaster_kube-system_ecae9d12d3610192347be3d1aa5aa552_1
+e6ecc6be1cbb        d75082f1d121           "kube-controller-m..."   3 hours ago          Up 3 hours                                              k8s_kube-controller-manager_kube-controller-manager-k8smaster_kube-system_99ec1450f6c1f32ac7bc9c5f56282da9_1
+ea621760a2d1        k8s.gcr.io/pause:3.1   "/pause"                 3 hours ago          Up 3 hours                                              k8s_POD_kube-controller-manager-k8smaster_kube-system_99ec1450f6c1f32ac7bc9c5f56282da9_1
+659208186e7c        k8s.gcr.io/pause:3.1   "/pause"                 3 hours ago          Up 3 hours                                              k8s_POD_kube-scheduler-k8smaster_kube-system_ecae9d12d3610192347be3d1aa5aa552_1
+856116f73839        k8s.gcr.io/pause:3.1   "/pause"                 3 hours ago          Up 3 hours                                              k8s_POD_kube-apiserver-k8smaster_kube-system_b2668192317977375ccf78a8e7c4086f_1
+02db0f66cf0f        k8s.gcr.io/pause:3.1   "/pause"                 3 hours ago          Up 3 hours                                              k8s_POD_etcd-k8smaster_kube-system_e5cd44264957d2c95fa822f9036af82e_1
+root@k8smaster:/home/vagrant/build-machine# docker container exec 2219b3f kubectl get nodes
+NAME        STATUS   ROLES    AGE   VERSION
+k8smaster   Ready    master   21h   v1.15.1
+k8snode1    Ready    <none>   21h   v1.15.1
+root@k8smaster:/home/vagrant/build-machine# docker container exec 2219b3f env
+PATH=/usr/local/openjdk-8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+HOSTNAME=2219b3f06e5b
+KUBECONFIG=/tmp/kube.conf
+LANG=C.UTF-8
+JAVA_HOME=/usr/local/openjdk-8
+JAVA_VERSION=8u212-b04
+JAVA_BASE_URL=https://github.com/AdoptOpenJDK/openjdk8-upstream-binaries/releases/download/jdk8u212-b04/OpenJDK8U-
+JAVA_URL_VERSION=8u212b04
+JENKINS_HOME=/var/jenkins_home
+JENKINS_SLAVE_AGENT_PORT=50000
+JENKINS_VERSION=2.176.2
+JENKINS_UC=https://updates.jenkins.io
+JENKINS_UC_EXPERIMENTAL=https://updates.jenkins.io/experimental
+JENKINS_INCREMENTALS_REPO_MIRROR=https://repo.jenkins-ci.org/incrementals
+COPY_REFERENCE_FILE_LOG=/var/jenkins_home/copy_reference_file.log
+HOME=/root
+root@k8smaster:/home/vagrant/build-machine#
